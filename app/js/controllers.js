@@ -7,7 +7,15 @@ angular.module('SecretSantaApp.controllers', [])
     $scope.cashCurrency = 'gbp';
   })
   .controller('namesController', function($scope) {
-
+    $scope.people = [{
+      name: 'joris',
+      email: 'joris@test.be'
+    },
+    {
+      name: 'seeger',
+      email: 'seeger@test.be'
+    }];
+    $scope.newPerson = {};
   });
   // .controller('namesController', function($scope, $compile) {
   //   $scope.people = [];
