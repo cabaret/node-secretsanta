@@ -17,6 +17,16 @@ module.exports = function (grunt) {
         file: 'app.js'
       }
     },
+    sass: {
+      dist: {
+        options: {
+          outputStyle: 'compressed'
+        },
+        files: {
+          'public/css/main.css': 'public/scss/main.scss'
+        }
+      }
+    },
     watch: {
       options: {
         nospawn: true,
@@ -35,11 +45,12 @@ module.exports = function (grunt) {
           livereload: reloadPort
         }
       },
-      css: {
-        files: ['public/css/*.css'],
+      sass: {
+        files: ['public/scss/**/*.scss'],
         options: {
           livereload: reloadPort
-        }
+        },
+        tasks: ['sass', 'develop', 'delayed-livereload']
       },
       jade: {
         files: ['views/*.jade'],
