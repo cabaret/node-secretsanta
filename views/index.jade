@@ -33,10 +33,10 @@ block content
             option(value="usd") $
 
   section.people.row(ng-controller="namesController", ng-cloak)
-    form(role="form", name="person-form", novalidate).person__form.clearfix
+    form(role="form", id="personForm", name="personForm", ng-submit="addPerson(personForm)", novalidate).person__form.clearfix
       div.form-group.col-xs-12
-        label(for="name").col-xs-12.col-sm-3 Name:
-        div.col-xs-12.col-sm-3
+        label(for="name").col-xs-12.col-sm-1 Name:
+        div.col-xs-12.col-sm-4
           input(type="text",
                 ng-model="newPerson.name",
                 id="name",
@@ -44,8 +44,8 @@ block content
                 placeholder="Someone's name",
                 required
           ).form-control
-        label(for="email").col-xs-12.col-sm-3 Email:
-        div.col-xs-12.col-sm-3
+        label(for="email").col-xs-12.col-sm-1 Email:
+        div.col-xs-12.col-sm-4
           input(type="email",
                 ng-model="newPerson.email",
                 id="email",
@@ -53,6 +53,7 @@ block content
                 placeholder="Someone's email",
                 required
           ).form-control
+        input.btn.btn-primary.col-sm-2(type="submit", ng-disabled="!personForm.$valid", value="Add person") Add person
     div.col-xs-12
       p
         | Add people here. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
