@@ -5,7 +5,7 @@ block content
     h1= title
     h3 Welcome to #{title}
 
-  section.details.row(ng-controller="detailsController", ng-cloak)
+  section.details.row
     form(role="form", name="details-form", novalidate).details__form.clearfix
       div.form-group.col-xs-12
         label(for="eventTitle").col-xs-12.col-sm-4 Event name:
@@ -36,7 +36,7 @@ block content
         div.col-xs-12
           textarea#message(name='message', ng-model="event.message").form-control
 
-  section.people.row(ng-controller="namesController", ng-cloak)
+  section.people.row
     form(role="form", id="personForm", name="personForm", ng-submit="addPerson(newPerson)", novalidate).person__form.clearfix
       div.form-group.col-xs-12
         label(for="name").col-xs-12.col-sm-1 Name:
@@ -71,3 +71,6 @@ block content
 
       div.added-people
         div.row(data-person, ng-repeat="person in people")
+
+
+  button.btn.btn-primary(ng-click="submitEvent()") Submit
