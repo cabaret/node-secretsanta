@@ -3,6 +3,17 @@ html
   head
     title= title
     link(rel='stylesheet', href='/css/main.css')
+  body(ng-app="SecretSantaApp")
+    div.container
+      block content
+
+
     script(src='http://localhost:35729/livereload.js')
-  body
-    block content
+    script(src='/vendor/jquery/jquery.min.js')
+    script(src='/vendor/angular/angular.js')
+    script(src='/vendor/angular/angular-route.js')
+    script(src='/js/app.js')
+    script(src='/js/services.js')
+    script(src='/js/controllers.js')
+    script(src='/js/filters.js')
+    script(src='/js/directives.js')

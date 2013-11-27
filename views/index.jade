@@ -1,5 +1,54 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  header.header.col-xs-12
+    h1= title
+    h3 Welcome to #{title}
+
+  section.details.row(ng-controller="detailsController", ng-cloak)
+    form(role="form", name="details-form", novalidate).details__form.clearfix
+      div.form-group.col-xs-12
+        label(for="eventTitle").col-xs-12.col-sm-4 Event name:
+        div.col-xs-12.col-sm-8
+          input(type="text",
+                ng-model="title",
+                id="eventTitle",
+                name="eventTitle",
+                placeholder="Our Secret Santa Party",
+                required
+          ).form-control
+
+      div.form-group.col-xs-12
+        label(for="cash").col-xs-12.col-sm-4 Maximum amount of cash to spend:
+        div.col-xs-6.col-sm-4
+          input#cash(name="cash",
+                     type="number",
+                     min="0",
+                     ng-model="cashAmount"
+          ).form-control
+        div.col-xs-6.col-sm-4
+          select#currency(ng-model="cashCurrency").form-control
+            option(value="gbp") £
+            option(value="eur") €
+            option(value="usd") $
+
+  section.people.row(ng-controller="namesController", ng-cloak)
+    div.col-xs-12
+      p
+        | Add people here. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        | tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum
+        | dolor sit amet, consectetur adipisicing elit. Unde, voluptate tenetur hic perspiciatis ex
+        | autem quaerat mollitia ratione ipsa aspernatur ipsam a quam assumenda voluptas?
+
+
+  //- br
+  //- br
+
+  //- div.names(ng-controller="namesController", ng-cloak)
+  //-   div.names-container
+  //-     div(data-person)
+
+  //-   br
+  //-   button(ng-click="addPerson()").btn.btn-primary Add new person
+
+
