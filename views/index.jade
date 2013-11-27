@@ -11,7 +11,7 @@ block content
         label(for="eventTitle").col-xs-12.col-sm-4 Event name:
         div.col-xs-12.col-sm-8
           input(type="text",
-                ng-model="title",
+                ng-model="event.title",
                 id="eventTitle",
                 name="eventTitle",
                 placeholder="Our Secret Santa Party",
@@ -24,16 +24,20 @@ block content
           input#cash(name="cash",
                      type="number",
                      min="0",
-                     ng-model="cashAmount"
+                     ng-model="event.cashAmount"
           ).form-control
         div.col-xs-6.col-sm-4
-          select#currency(ng-model="cashCurrency").form-control
+          select#currency(ng-model="event.cashCurrency").form-control
             option(value="gbp") £
             option(value="eur") €
             option(value="usd") $
+      div.form-group.col-xs-12
+        label(for="message").col-xs-12 Message:
+        div.col-xs-12
+          textarea#message(name='message', ng-model="event.message").form-control
 
   section.people.row(ng-controller="namesController", ng-cloak)
-    form(role="form", id="personForm", name="personForm", ng-submit="addPerson(personForm)", novalidate).person__form.clearfix
+    form(role="form", id="personForm", name="personForm", ng-submit="addPerson(newPerson)", novalidate).person__form.clearfix
       div.form-group.col-xs-12
         label(for="name").col-xs-12.col-sm-1 Name:
         div.col-xs-12.col-sm-4
@@ -53,7 +57,11 @@ block content
                 placeholder="Someone's email",
                 required
           ).form-control
-        input.btn.btn-primary.col-sm-2(type="submit", ng-disabled="!personForm.$valid", value="Add person") Add person
+        input(type="submit",
+              ng-disabled="!personForm.$valid",
+              value="Add person"
+          ).btn.btn-primary.col-sm-2 | Add person
+
     div.col-xs-12
       p
         | Add people here. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
