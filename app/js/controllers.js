@@ -1,15 +1,13 @@
 'use strict';
 
 angular.module('SecretSantaApp.controllers', [])
-  .controller('detailsController', function($scope) {
+  .controller('eventController', function($scope, emailAPIService, _) {
     $scope.event = {
       title: '',
       cashAmount: 15,
       cashCurrency: 'eur',
       message: ''
     }
-  })
-  .controller('namesController', function($scope) {
     $scope.people = [];
     $scope.newPerson = {};
 
@@ -20,5 +18,14 @@ angular.module('SecretSantaApp.controllers', [])
 
     $scope.removePerson = function(index) {
       $scope.people.splice(index, 1);
+    };
+
+    $scope.submitEvent = function() {
+      var postData = {};
+
+      _.extend(postData, $scope.event, $scope.people);
+      postData.people = $scope.people;
+
+      emailAPIService.postEmails(postData);
     };
   });
