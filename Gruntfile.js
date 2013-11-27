@@ -23,7 +23,7 @@ module.exports = function (grunt) {
           outputStyle: 'compressed'
         },
         files: {
-          'public/css/main.css': 'public/scss/main.scss'
+          'app/css/main.css': 'app/scss/main.scss'
         }
       }
     },
@@ -40,13 +40,14 @@ module.exports = function (grunt) {
         tasks: ['develop', 'delayed-livereload']
       },
       js: {
-        files: ['public/js/*.js'],
+        files: ['app/js/*.js'],
         options: {
           livereload: reloadPort
-        }
+        },
+        tasks: ['develop']
       },
       sass: {
-        files: ['public/scss/**/*.scss'],
+        files: ['app/scss/**/*.scss'],
         options: {
           livereload: reloadPort
         },
