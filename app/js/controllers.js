@@ -2,31 +2,27 @@
 
 angular.module('SecretSantaApp.controllers', [])
   .controller('detailsController', function($scope) {
-    $scope.title = '';
-    $scope.cashAmount = 0;
-    $scope.cashCurrency = 'gbp';
+    $scope.event = {
+      title: '',
+      cashAmount: 15,
+      cashCurrency: 'eur',
+      message: ''
+    }
   })
   .controller('namesController', function($scope) {
-    $scope.people = [{
-      name: 'joris',
-      email: 'joris@test.be'
-    },
-    {
-      name: 'seeger',
-      email: 'seeger@test.be'
-    }];
+    $scope.people = [];
     $scope.newPerson = {};
-  });
-  // .controller('namesController', function($scope, $compile) {
-  //   $scope.people = [];
-  //   $scope.newPerson = {};
 
-  //   $scope.addPerson = function() {
-  //     var el;
-  //     $scope.people.push($scope.newPerson);
-  //     $scope.newPerson = {};
-  //     $('.names-container').append(
-  //       $compile('<div data-person />')($scope)
-  //     );
-  //   };
-  // });
+    $scope.addPerson = function(person) {
+      $scope.people.push(person);
+      $scope.newPerson = {};
+    };
+
+    $scope.removePerson = function(person) {
+      var index = $scope.people.indexOf(person);
+      if (index > -1) {
+        $scope.people = $scope.people.splice(index, 1);
+        person = null;
+      }
+    }
+  });
