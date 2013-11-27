@@ -18,11 +18,7 @@ angular.module('SecretSantaApp.controllers', [])
       $scope.newPerson = {};
     };
 
-    $scope.removePerson = function(person) {
-      var index = $scope.people.indexOf(person);
-      if (index > -1) {
-        $scope.people = $scope.people.splice(index, 1);
-        person = null;
-      }
-    }
+    $scope.removePerson = function(index) {
+      $scope.people.splice(index, 1);
+    };
   });
