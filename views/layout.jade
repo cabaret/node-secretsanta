@@ -4,7 +4,7 @@ html
     title= title
     link(rel='stylesheet', href='/css/main.css')
   body(ng-app="SecretSantaApp")
-    div.container
+    div.container(ng-controller="eventController", ng-cloak)
       block content
 
 
@@ -12,6 +12,8 @@ html
     script(src='/vendor/jquery/jquery.min.js')
     script(src='/vendor/angular/angular.js')
     script(src='/vendor/angular/angular-route.js')
+    script(src='/vendor/underscore/underscore-min.js')
+    script(src='/vendor/angular-underscore-module/angular-underscore-module.js')
     script(src='/js/app.js')
     script(src='/js/services.js')
     script(src='/js/controllers.js')
