@@ -3,6 +3,8 @@
  * Module dependencies.
  */
 
+require('newrelic');
+
 var express = require('express')
   , routes = require('./routes')
   , http = require('http')
