@@ -20,12 +20,18 @@ angular.module('SecretSantaApp.controllers', [])
       $scope.people.splice(index, 1);
     };
 
+    $scope.validateEvent = function(detailsForm, people) {
+      if(detailsForm.$valid && people.length >= 3) {
+        return true;
+      } else {
+        return false;
+      }
+    };
+
     $scope.submitEvent = function() {
       var postData = {};
 
-      _.extend(postData, $scope.event, $scope.people);
-      postData.people = $scope.people;
-
+      _.extend(postData, { event: $scope.event }, { people: $scope.people });
       emailAPIService.postEmails(postData);
     };
   });
