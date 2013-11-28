@@ -6,7 +6,7 @@ block content
     h3 Welcome to #{title}
 
   section.details.row
-    form(role="form", name="details-form", novalidate).details__form.clearfix
+    form(role="form", name="detailsForm", id="detailsForm", novalidate).details__form.clearfix
       div.form-group.col-xs-12
         label(for="eventTitle").col-xs-12.col-sm-4 Event name:
         div.col-xs-12.col-sm-8
@@ -62,6 +62,8 @@ block content
               value="Add person"
           ).btn.btn-primary.col-sm-2 | Add person
 
+        {{ people.length }}
+
     div.col-xs-12
       p
         | Add people here. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -73,4 +75,4 @@ block content
         div.row(data-person, ng-repeat="person in people")
 
 
-  button.btn.btn-primary(ng-click="submitEvent()") Submit
+  button.btn.btn-primary(ng-click="submitEvent()", ng-disabled="!validateEvent(detailsForm, people)") Submit
