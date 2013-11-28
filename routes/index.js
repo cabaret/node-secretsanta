@@ -3,11 +3,27 @@
  * GET home page.
  */
 
+var _ = require('underscore');
+
+
 exports.index = function(req, res){
   res.render('index', { title: 'node-secretsanta' });
 };
 
 exports.handleEmails = function(req, res) {
-  console.log(req.body);
-  res.json(req.body);
+  var postData = req.body,
+      mailData = {}, secretSanta;
+  console.log(postData);
+  mailData.event = postData.event;
+
+  secretSanta = (function() {
+    var len = postData.people.length, i;
+    for(i = 0; i < len; i++) {
+      _.sample(postData.people)
+    }
+  })();
+
+  console.log(mailData);
+  res.json(mailData);
 }
+
