@@ -9,7 +9,7 @@
   font-style: normal;
 }
 
-[class^="social__icon--"], [class*="social__icon--"] {
+[class^="social__icon"], [class*=" social__icon"] {
   font-family: 'icomoon';
   speak: none;
   font-style: normal;
@@ -26,8 +26,8 @@
 .social__icon--instagram:before {
   content: "\e600";
 }
-.social__icon--dribble:before {
-  content: "\dbbe";
+.social__icon--dribbble:before {
+  content: "\e601";
 }
 .social__icon--linkedin:before {
   content: "\e602";

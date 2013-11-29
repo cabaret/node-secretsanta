@@ -1,15 +1,15 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('../fonts/icomoon.eot');
-	src:url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/icomoon.ttf') format('truetype'),
-		url('../fonts/icomoon.woff') format('woff'),
-		url('../fonts/icomoon.svg#icomoon') format('svg');
+	src:url('fonts/icomoon.eot');
+	src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('fonts/icomoon.ttf') format('truetype'),
+		url('fonts/icomoon.woff') format('woff'),
+		url('fonts/icomoon.svg#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
-[class^="social__icon--"], [class*=" social__icon--"] {
+[class^="icon-"], [class*=" icon-"] {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -23,18 +23,18 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.social__icon--instagram:before {
+.icon-instagram:before {
 	content: "\e600";
 }
-.social__icon--dribble:before {
-	content: "\dbbe";
+.icon-dribbble:before {
+	content: "\e601";
 }
-.social__icon--linkedin:before {
+.icon-linkedin:before {
 	content: "\e602";
 }
-.social__icon--twitter:before {
+.icon-twitter:before {
 	content: "\e603";
 }
-.social__icon--github:before {
+.icon-github:before {
 	content: "\e604";
 }
