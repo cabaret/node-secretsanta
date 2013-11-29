@@ -1,0 +1,33 @@
+.footer {
+  background: #131313;
+  padding: 2em 0;
+}
+
+.credit {
+  text-align: center;
+}
+
+.credit__author {
+  color: #FFF;
+  font-family: $wisdom;
+  font-size: 2em;
+}
+
+.credit__skill {
+  color: #B72727;
+  font-family: $tahoma;
+  font-size: 1em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.social {
+  margin: 0;
+  padding: 0;
+}
+
+.social__item {
+  display: inline;
+}
+
+// forloop
