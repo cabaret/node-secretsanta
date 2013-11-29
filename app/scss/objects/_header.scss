@@ -1,3 +1,29 @@
 .header {
-  margin: 0 0 2em 0;
+  @include transition(all .5s);
+  background-image: url('../img/header.jpg');
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+
+  @media (min-width: $screen-sm-min) {
+    @include transition(all .5s);
+  }
+}
+
+.logo__img {
+  @include transition(all .5s);
+  display: block;
+  margin: 1em auto;
+  width: 7.5em;
+
+  @media (min-width: $screen-sm-min) {
+    @include transition(all .5s);
+    width: 13em;
+    margin: 2em auto;
+  }
+}
+
+.logo__text {
+  display: none;
 }
