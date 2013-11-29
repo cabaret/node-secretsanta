@@ -1,3 +1,4 @@
 node_modules/
 app/vendor/
 config/deploy.rb
+.DS_Store
