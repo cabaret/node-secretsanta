@@ -32,18 +32,20 @@ html(class="no-js", lang="en")
         p.credit__author Joris Ooms
         p.credit__skill Development
         ul.social
-          - var social = ['github', 'twitter', 'linkedin', 'instagram']
-          each s in social
-            li.social__item
-              i(class="social__icon.social__icon--#{s}")= s
+          - var social = [{ 'name': 'github', 'url': 'https://github.com/cabaret' }, {'name': 'twitter', 'url': 'https://twitter.com/ontolecabaret' }, {'name': 'linkedin', 'url': 'http://www.linkedin.com/in/oomsjoris' }, { 'name': 'instagram', 'url': 'http://instagram.com/dinosaursinspace' }]
+          - for network in social
+              li.social__item
+                a(href="#{network.url}", title="#{network.name}")
+                  i(class="social__icon social__icon--#{network.name}")
       div.col-xs-12.col-sm-6.col-md-3.col-md-push-3.credit
         p.credit__author Seeger Mattijs
         p.credit__skill Design
         ul.social
-          - var social = ['dribbble', 'twitter', 'linkedin', 'instagram']
-          each s in social
-            li.social__item
-              i(class="social__icon.social__icon--#{s}")= s
+          - var social = [{ 'name': 'dribbble', 'url': 'http://dribbble.com/seegermattijs' }, { 'name': 'twitter', 'url': 'https://twitter.com/SeegerMattijs' }, { 'name': 'linkedin', 'url': 'http://be.linkedin.com/pub/seeger-mattijs/48/284/745' }, { 'name': 'instagram', 'url': 'http://instagram.com/seegermattijs' }]
+          - for network in social
+              li.social__item
+                a(href="#{network.url}", title="#{network.name}")
+                  i(class="social__icon social__icon--#{network.name}")
 
     script(src='http://localhost:35729/livereload.js')
     script(src='/vendor/jquery/jquery.min.js')
