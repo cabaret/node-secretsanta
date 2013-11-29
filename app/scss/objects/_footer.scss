@@ -1,10 +1,21 @@
 .footer {
   background: #131313;
   padding: 2em 0;
+
+  @media (min-width: $screen-sm-min) {
+    padding: 3em 0;
+  }
 }
 
 .credit {
   text-align: center;
+  &:first-child {
+    padding-bottom: 2em;
+
+    @media (min-width: $screen-sm-min) {
+      padding-bottom: 0;
+    }
+  }
 }
 
 .credit__author {
@@ -28,6 +39,20 @@
 
 .social__item {
   display: inline;
+}
+
+.social__icon {
+  @include transition(top .2s ease-in-out);
+  color: #d7d7d7;
+  display: inline-block;
+  font-size: 2em;
+  margin: 0 .15rem;
+  position: relative;
+
+  &:hover {
+    @include transition(top .2s ease-in-out);
+    top: -.1em;
+  }
 }
 
 // forloop
