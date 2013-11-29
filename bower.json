@@ -9,6 +9,7 @@
   "dependencies": {
     "sass-bootstrap": "~3.0.2",
     "angular-underscore-module": "*",
-    "underscore": "~1.5.2"
+    "underscore": "~1.5.2",
+    "bourbon": "~3.1.8"
   }
 }
