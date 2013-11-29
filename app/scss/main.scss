@@ -1,11 +1,14 @@
+@import 'config/animations';
+@import 'config/fonts';
+
 @import '../vendor/sass-bootstrap/lib/bootstrap';
 @import '../vendor/bourbon/app/assets/stylesheets/bourbon';
 
 @import 'general';
 
-@import 'config/fonts';
 
 @import 'objects/header';
 @import 'objects/details';
 @import 'objects/people';
+@import 'objects/icons';
 @import 'objects/footer';
