@@ -23,10 +23,10 @@ block content
               span.input-group-addon
                 i.icon.icon--calendar
 
-        div.form-group.col-xs-12.col-sm-7.col-md-6
-          label(for="").event__label.col-xs-12 Amount of cash to spend
+        div.form-group.col-xs-12.col-sm-7.col-md-5.col-md-push-1
+          label(for="").event__label.col-xs-12 Amount of cash to spend: &euro; {{ event.cashAmount }}
           div.slider.col-xs-12(ui-slider="slider.options",  min="0", max="100", step="1", ng-model="event.cashAmount")
-          {{ event.cashAmount }}
+
 
         //- div.form-group.col-xs-12.col-sm-5.col-sm-push-1
         //-   label(for="cash").col-xs-12.col-sm-4 Maximum amount of cash to spend:
