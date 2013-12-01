@@ -18,10 +18,15 @@
   text-transform: uppercase;
   font-weight: bold;
 }
-.event__input {}
+.event__input {
+  outline: none;
+  border: none;
+}
 
 .event__input--textarea {
   height: 7.5em !important;
+  resize: none;
+
   &:focus {
     outline: none;
     border: none;
@@ -35,6 +40,7 @@
 .event__input--name {
   @include placeholder {
     color: #fafeff;
+    text-decoration: underline;
   }
   border: none;
   border-radius: 0;
@@ -42,7 +48,8 @@
   box-shadow: none;
   color: #fafeff;
   font-family: $tahoma;
-  font-size: 1.5em;
+  font-size: 1.8em;
+  height: 1.8em;
   margin: 0 auto;
   outline: none;
   text-align: center;
