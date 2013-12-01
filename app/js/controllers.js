@@ -2,7 +2,7 @@
 
 angular.module('SecretSantaApp.controllers', [])
   .controller('eventController', function($scope, emailAPIService, _) {
-    $('.slider').slider()
+    $('.slider').slider();
 
     $scope.event = {
       title: '',
