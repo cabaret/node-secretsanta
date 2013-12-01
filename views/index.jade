@@ -1,74 +1,73 @@
 extends layout
 
 block content
-  section.details
-    div.container(ng-controller="eventController", ng-cloak)
-      form(role="form", name="detailsForm", id="detailsForm", novalidate).details__form
-        div.form-group.col-xs-12.event__name
-          label(for="eventTitle").col-xs-12.col-sm-4.event__label.event__label--name Event name:
-          div.col-xs-12
-            input(type="text",
-                  ng-model="event.title",
-                  id="eventTitle",
-                  name="eventTitle",
-                  placeholder="Event Name",
-                  required
-            ).form-control.event__input.event__input--name
+  div(ng-controller="eventController", ng-cloak)
+    section.details
+      div.container
+        form(role="form", name="detailsForm", id="detailsForm", novalidate).details__form
+          div.form-group.col-xs-12.event__name
+            label(for="eventTitle").col-xs-12.col-sm-4.event__label.event__label--name Event name:
+            div.col-xs-12
+              input(type="text",
+                    ng-model="event.title",
+                    id="eventTitle",
+                    name="eventTitle",
+                    placeholder="Event Name",
+                    required
+              ).form-control.event__input.event__input--name
 
-        div.form-group.col-xs-12.col-sm-5.col-md-6
-          label(for="date").event__label.col-xs-12 Pick your date
-          div.control-group.input-append.col-xs-12
-            div.input-group
-              input.form-control.event__input(type="text", ng-model="event.date", data-date-format="dd/mm/yyyy", bs-datepicker)
-              span.input-group-addon
-                i.icon.icon--calendar
+          div.form-group.col-xs-12.col-sm-5.col-md-6
+            label(for="date").event__label.col-xs-12 Pick your date
+            div.control-group.input-append.col-xs-12
+              div.input-group
+                input.form-control.event__input(type="text", ng-model="event.date", data-date-format="dd/mm/yyyy", bs-datepicker)
+                span.input-group-addon
+                  i.icon.icon--calendar
 
-        div.form-group.col-xs-12.col-sm-7.col-md-5.col-md-push-1
-          label(for="").event__label.col-xs-12 Amount of cash to spend: &euro; {{ event.cashAmount }}
-          div.slider.col-xs-12(ui-slider="slider.options",  min="0", max="100", step="1", ng-model="event.cashAmount")
+          div.form-group.col-xs-12.col-sm-7.col-md-5.col-md-push-1
+            label(for="").event__label.col-xs-12 Amount of cash to spend: &euro; {{ event.cashAmount }}
+            div.slider.col-xs-12(ui-slider="slider.options",  min="0", max="100", step="1", ng-model="event.cashAmount")
 
-        div.form-group.col-xs-12
-          label(for="message").col-xs-12.event__label Message
-          div.col-xs-12
-            textarea(name='message', ng-model="event.message").form-control.event__input--textarea
+          div.form-group.col-xs-12
+            label(for="message").col-xs-12.event__label Message
+            div.col-xs-12
+              textarea(name='message', ng-model="event.message", noresize).form-control.event__input--textarea
 
-  section.people
-    div.container
-      h2.people__title Add people
-      form(role="form", id="personForm", name="personForm", ng-submit="addPerson(newPerson)", novalidate).person__form.clearfix
-        div.form-group.col-xs-12
-          label(for="name").col-xs-12.col-sm-1.people__label Name:
-          div.col-xs-12.col-sm-5
-            input(type="text",
-                  ng-model="newPerson.name",
-                  id="name",
-                  name="name",
-                  placeholder="Someone's name",
-                  required
-            ).form-control.people__input
-          label(for="email").col-xs-12.col-sm-1.people__label Email:
-          div.col-xs-12.col-sm-5
-            input(type="email",
-                  ng-model="newPerson.email",
-                  id="email",
-                  name="email",
-                  placeholder="Someone's email",
-                  required
-            ).form-control.people__input
-          div.col-xs-12.col-sm-1.col-sm-push-1
-            input(type="submit",
-                  ng-disabled="!personForm.$valid",
-                  value="+"
-            ).people__button--add.form-control
+    section.people
+      div.container
+        form(role="form", id="personForm", name="personForm", ng-submit="addPerson(newPerson)", novalidate).person__form.clearfix
+          h2.people__title Add people
+          div.form-group.col-xs-12
+            label(for="name").col-xs-12.col-sm-1.people__label Name:
+            div.col-xs-12.col-sm-5
+              input(type="text",
+                    ng-model="newPerson.name",
+                    id="name",
+                    name="name",
+                    placeholder="Someone's name",
+                    required
+              ).form-control.people__input
+            label(for="email").col-xs-12.col-sm-1.people__label Email:
+            div.col-xs-12.col-sm-5
+              input(type="email",
+                    ng-model="newPerson.email",
+                    id="email",
+                    name="email",
+                    placeholder="Someone's email",
+                    required
+              ).form-control.people__input
+            div.col-xs-12.col-sm-2.add-container
+              button(ng-disabled="!personForm.$valid").people__button--add.form-control
+                i.icon--add
 
-        div.added-people
-          person.row(ng-repeat="person in people")
+          div.added-people
+            person.row(ng-repeat="person in people")
 
-  section.submit
-    div.container
-      button.submit__btn-submit(ng-click="submitEvent()",
-                         ng-disabled="!validateEvent(detailsForm, people)"
-                         ) Submit
+    section.submit
+      div.container
+        button.submit__btn-submit(ng-click="submitEvent()",
+                           ng-disabled="!validateEvent(detailsForm, people)"
+                           ) Submit
 
 
 
