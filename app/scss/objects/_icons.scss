@@ -9,7 +9,7 @@
   font-style: normal;
 }
 
-[class^="social__icon"], [class*=" social__icon"] {
+[class^="icon--"], [class*=" icon--"] {
   font-family: 'icomoon';
   speak: none;
   font-style: normal;
@@ -23,18 +23,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.social__icon--instagram:before {
+.icon--instagram:before {
   content: "\e600";
 }
-.social__icon--dribbble:before {
+.icon--dribbble:before {
   content: "\e601";
 }
-.social__icon--linkedin:before {
+.icon--linkedin:before {
   content: "\e602";
 }
-.social__icon--twitter:before {
+.icon--twitter:before {
   content: "\e603";
 }
-.social__icon--github:before {
+.icon--github:before {
   content: "\e604";
+}
+.icon--calendar:before {
+  content: "\e605";
 }
