@@ -3,10 +3,12 @@
   color: #515151;
   font-family: $wisdom;
   font-size: 1.8em;
-  margin: 1em 0;
+  margin: 0;
+  padding: 1em 0;
 
   @media (min-width: $screen-sm-min) {
-    margin: 1.5em 0;
+    line-height: 1.63em;
+    padding: 1.5em 0;
   }
 }
 
