@@ -44,6 +44,7 @@
 .social__icon {
   @include transition(top .2s ease-in-out);
   color: #d7d7d7;
+  background: #131313;
   display: inline-block;
   font-size: 2em;
   margin: 0 .15rem;
@@ -54,5 +55,3 @@
     top: -.1em;
   }
 }
-
-// forloop
