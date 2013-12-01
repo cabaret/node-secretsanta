@@ -37,6 +37,7 @@
 .people__button--add {
   @include transition(all .3s);
   background-color: #b82929 !important;
+  box-shadow: none;
   color: #fafeff;
   margin: .5em 0;
   &[disabled] {
@@ -74,8 +75,6 @@
   @include transition(all .5s);
   background-image: url('../img/header.jpg');
   background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
   background-size: cover;
   background-position: 0 80%;
   height: 6em;
