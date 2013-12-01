@@ -3,7 +3,7 @@
 angular.module('SecretSantaApp.directives', [])
   .directive('person', function() {
     return {
-      restrict: 'A',
+      restrict: 'E',
       templateUrl: '/js/directives/person.html'
     }
   });
