@@ -1,7 +1,77 @@
 .people {
-  margin-top: 2em;
+  background: #dcdcdc
+}
+
+.people__title {
+  color: #b72727;
+  font-family: $tahoma;
+  font-size: 1.5em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.people__label {
+  display: none;
+}
+
+.people__input {
+  @include placeholder {
+    color: #9A9A9A;
+  }
+  background: #fafeff;
+  border: none;
+  border-radius: .4em;
+  font-family: $tahoma;
+  margin: .5em 0;
+  text-transform: uppercase;
+}
+
+.people__button--add {
+  background-color: #b82929 !important;
+  color: #fafeff;
+  margin: .5em 0;
+  &[disabled] {
+    @include opacity(.65);
+  }
+
+  @media (min-width: $screen-sm-min) {
+    border-radius: 50%;
+    height: 2.2em;
+    width: 2.2em;
+  }
 }
 
 .added-people {
   margin-top: 2em;
+}
+
+
+.submit {
+  @include clearfix;
+  @include transition(all .5s);
+  background-image: url('../img/header.jpg');
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-position: bottom center;
+  height: 6em;
+
+  > .container {
+    height: 6em;
+  }
+}
+
+.submit__btn-submit {
+  background: none;
+  border: none;
+  color: #fafeff;
+  display: block;
+  font-family: $tahoma;
+  font-weight: bold;
+  font-size: 2em;
+  height: 100%;
+  outline: none;
+  text-transform: uppercase;
+  width: 100%;
 }
