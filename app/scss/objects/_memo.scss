@@ -1,0 +1,16 @@
+.memo {
+  background: #fafeff;
+  color: #515151;
+  font-family: $wisdom;
+  font-size: 1.8em;
+  margin: 1em 0;
+
+  @media (min-width: $screen-sm-min) {
+    margin: 1.5em 0;
+  }
+}
+
+.headline {
+  color: #b72828;
+  display: block;
+}
