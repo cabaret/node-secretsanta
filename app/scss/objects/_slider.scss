@@ -1,0 +1,28 @@
+.slider {
+  margin: 1em 0;
+}
+
+.ui-widget-content {
+  background: #fafeff!important;
+}
+
+.ui-widget-content,
+.ui-slider-range  {
+  border: none;
+  border-radius: .5em;
+}
+
+.ui-slider-handle {
+  background: #fafeff!important;
+  border-radius: 50%;
+  border: .55em solid #671717 !important;
+  height: 1.5em!important;
+  width: 1.5em!important;
+  outline: none!important;
+}
+
+.ui-slider-range,
+.ui-slider-range-min {
+  background: #671717;
+}
+
