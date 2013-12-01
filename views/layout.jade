@@ -17,15 +17,22 @@ html(class="no-js", lang="en")
     meta(name="author", content="Joris Ooms & Seeger Mattijs")
 
     title=title
+    link(rel="stylesheet", href="/css/jquery-ui.min.css")
     link(rel='stylesheet', href='/css/main.css')
 
   body(ng-app="SecretSantaApp")
-    header.header.col-xs-12
-      img(src="/img/logo.svg", alt="Memo from Santa logo").logo__img
+    header.header
+      img(src="/img/logo.svg", alt="Memo from Santa logo", width="208", height="243").logo__img
       h1.logo__text Memo from Santa
 
-    div.container(ng-controller="eventController", ng-cloak)
-      block content
+    div.container
+      section.memo.row
+        p.col-xs-12
+          span.headline Hi, Santa is too busy can I help you?
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          | Vivamus lobortis luctus iaculis. Aliquam fermentum dolor ac.
+
+    block content
 
     footer.footer.col-xs-12
       div.col-xs-12.col-sm-6.col-md-3.col-md-push-3.credit
@@ -36,7 +43,7 @@ html(class="no-js", lang="en")
           - for network in social
               li.social__item
                 a(href="#{network.url}", title="#{network.name}")
-                  i(class="social__icon social__icon--#{network.name}")
+                  i(class="social__icon icon--#{network.name}")
       div.col-xs-12.col-sm-6.col-md-3.col-md-push-3.credit
         p.credit__author Seeger Mattijs
         p.credit__skill Design
@@ -45,11 +52,17 @@ html(class="no-js", lang="en")
           - for network in social
               li.social__item
                 a(href="#{network.url}", title="#{network.name}")
-                  i(class="social__icon social__icon--#{network.name}")
+                  i(class="social__icon icon--#{network.name}")
 
     script(src='http://localhost:35729/livereload.js')
     script(src='/vendor/jquery/jquery.min.js')
+    script(src='/vendor/jquery-ui/ui/minified/jquery-ui.min.js')
+    script(src='/vendor/jquery-ui-touch-punch/jquery.ui.touch-punch.js')
+    script(src="/vendor/sass-bootstrap/dist/js/bootstrap.min.js")
     script(src='/vendor/angular/angular.js')
+    script(src='/vendor/angular-ui-slider/src/slider.js')
+    script(src='/vendor/angular-strap/dist/angular-strap.min.js')
+    script(src='/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js')
     script(src='/vendor/underscore/underscore-min.js')
     script(src='/vendor/angular-underscore-module/angular-underscore-module.js')
     script(src='/js/app.js')
