@@ -1,3 +1,55 @@
-.details__form {
+.details {
+  background: #b72727;
 
+  .form-group {
+    margin-bottom: 1em;
+  }
+}
+
+.details__form {
+  @include clearfix;
+  margin: 1.2em 0;
+}
+
+.event__label {
+  color: #fafeff;
+  font-family: $tahoma;
+  font-size: .9em;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.event__input {}
+
+.event__label--name {
+  display: none;
+}
+
+.event__input--name {
+  @include placeholder {
+    color: #fafeff;
+  }
+  border: none;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  color: #fafeff;
+  font-family: $tahoma;
+  font-size: 1.5em;
+  margin: 0 auto;
+  outline: none;
+  text-align: center;
+  text-decoration: underline;
+  text-transform: uppercase;
+
+  &:focus {
+    border: none;
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+.btn--calendar {
+  border: none;
+  border-radius: 0;
+  background: #fafeff;
 }
