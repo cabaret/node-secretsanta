@@ -1,74 +1,81 @@
 extends layout
 
 block content
-  section.details.row
-    form(role="form", name="detailsForm", id="detailsForm", novalidate).details__form.clearfix
-      div.form-group.col-xs-12
-        label(for="eventTitle").col-xs-12.col-sm-4 Event name:
-        div.col-xs-12.col-sm-8
-          input(type="text",
-                ng-model="event.title",
-                id="eventTitle",
-                name="eventTitle",
-                placeholder="Our Secret Santa Party",
-                required
-          ).form-control
+  section.details
+    div.container(ng-controller="eventController", ng-cloak)
+      form(role="form", name="detailsForm", id="detailsForm", novalidate).details__form
+        div.form-group.col-xs-12.event__name
+          label(for="eventTitle").col-xs-12.col-sm-4.event__label.event__label--name Event name:
+          div.col-xs-12
+            input(type="text",
+                  ng-model="event.title",
+                  id="eventTitle",
+                  name="eventTitle",
+                  placeholder="Event Name",
+                  required
+            ).form-control.event__input.event__input--name
 
-      div.form-group.col-xs-12
-        label(for="cash").col-xs-12.col-sm-4 Maximum amount of cash to spend:
-        div.col-xs-6.col-sm-4
-          input#cash(name="cash",
-                     type="number",
-                     min="0",
-                     ng-model="event.cashAmount"
-          ).form-control
-        div.col-xs-6.col-sm-4
-          select#currency(ng-model="event.cashCurrency").form-control
-            option(value="gbp") £
-            option(value="eur") €
-            option(value="usd") $
-      div.form-group.col-xs-12
-        label(for="message").col-xs-12 Message:
-        div.col-xs-12
-          textarea#message(name='message', ng-model="event.message").form-control
+        div.form-group.col-xs-12.col-sm-5.col-md-6
+          label(for="date").event__label.col-xs-12 Pick your date
+          div.control-group.input-append.col-xs-12
+            div.input-group
+              input.form-control.event__input(type="text", ng-model="event.date", data-date-format="dd/mm/yyyy", bs-datepicker)
+              span.input-group-addon
+                i.icon.icon--calendar
 
-  section.people.row
-    form(role="form", id="personForm", name="personForm", ng-submit="addPerson(newPerson)", novalidate).person__form.clearfix
-      div.form-group.col-xs-12
-        label(for="name").col-xs-12.col-sm-1 Name:
-        div.col-xs-12.col-sm-4
-          input(type="text",
-                ng-model="newPerson.name",
-                id="name",
-                name="name",
-                placeholder="Someone's name",
-                required
-          ).form-control
-        label(for="email").col-xs-12.col-sm-1 Email:
-        div.col-xs-12.col-sm-4
-          input(type="email",
-                ng-model="newPerson.email",
-                id="email",
-                name="email",
-                placeholder="Someone's email",
-                required
-          ).form-control
-        input(type="submit",
-              ng-disabled="!personForm.$valid",
-              value="Add person"
-          ).btn.btn-primary.col-sm-2 | Add person
+        div.form-group.col-xs-12.col-sm-7.col-md-6
+          label(for="").event__label.col-xs-12 Amount of cash to spend
+          div.slider.col-xs-12(ui-slider="slider.options",  min="0", max="100", step="1", ng-model="event.cashAmount")
+          {{ event.cashAmount }}
 
-        {{ people.length }}
+        //- div.form-group.col-xs-12.col-sm-5.col-sm-push-1
+        //-   label(for="cash").col-xs-12.col-sm-4 Maximum amount of cash to spend:
+        //-   div.col-xs-6.col-sm-4
+        //-     input#cash(name="cash",
+        //-                type="number",
+        //-                min="0",
+        //-                ng-model="event.cashAmount"
+        //-     ).form-control
+        //-   div.col-xs-6.col-sm-4
+        //-     select#currency(ng-model="event.cashCurrency").form-control
+        //-       option(value="gbp") £
+        //-       option(value="eur") €
+        //-       option(value="usd") $
+        //- div.form-group.col-xs-12
+        //-   label(for="message").col-xs-12 Message:
+        //-   div.col-xs-12
+        //-     textarea#message(name='message', ng-model="event.message").form-control
 
-    div.col-xs-12
-      p
-        | Add people here. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        | tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum
-        | dolor sit amet, consectetur adipisicing elit. Unde, voluptate tenetur hic perspiciatis ex
-        | autem quaerat mollitia ratione ipsa aspernatur ipsam a quam assumenda voluptas?
+  //- div.container
+  //-   section.people.row
+  //-     form(role="form", id="personForm", name="personForm", ng-submit="addPerson(newPerson)", novalidate).person__form.clearfix
+  //-       div.form-group.col-xs-12
+  //-         label(for="name").col-xs-12.col-sm-1 Name:
+  //-         div.col-xs-12.col-sm-4
+  //-           input(type="text",
+  //-                 ng-model="newPerson.name",
+  //-                 id="name",
+  //-                 name="name",
+  //-                 placeholder="Someone's name",
+  //-                 required
+  //-           ).form-control
+  //-         label(for="email").col-xs-12.col-sm-1 Email:
+  //-         div.col-xs-12.col-sm-4
+  //-           input(type="email",
+  //-                 ng-model="newPerson.email",
+  //-                 id="email",
+  //-                 name="email",
+  //-                 placeholder="Someone's email",
+  //-                 required
+  //-           ).form-control
+  //-         input(type="submit",
+  //-               ng-disabled="!personForm.$valid",
+  //-               value="Add person"
+  //-           ).btn.btn-primary.col-sm-2 | Add person
 
-      div.added-people
-        div.row(data-person, ng-repeat="person in people")
+  //-         {{ people.length }}
 
+  //-       div.added-people
+  //-         person.row(ng-repeat="person in people")
 
-  button.btn.btn-primary(ng-click="submitEvent()", ng-disabled="!validateEvent(detailsForm, people)") Submit
+  //-   button.submit-form(ng-click="submitEvent()", ng-disabled="!validateEvent(detailsForm, people)") Submit
