@@ -20,6 +20,14 @@
 }
 .event__input {}
 
+.event__input--textarea {
+  height: 7.5em !important;
+  &:focus {
+    outline: none;
+    border: none;
+  }
+}
+
 .event__label--name {
   display: none;
 }
