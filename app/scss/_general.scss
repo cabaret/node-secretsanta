@@ -7,11 +7,13 @@ body {
 }
 
 .container {
-  max-width: 60em;
+  max-width: 50rem;
 }
 
 .input-group-addon {
   background: #fafeff;
+  border: none;
+  border-left: 1px solid #ddd !important;
 }
 
 .submit-form {
