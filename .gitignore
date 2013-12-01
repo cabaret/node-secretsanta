@@ -1,5 +1,7 @@
 config/deploy.rb
+config/newrelic.js
 .DS_Store
 app/vendor/
 node_modules/
 newrelic_agent.log
+
