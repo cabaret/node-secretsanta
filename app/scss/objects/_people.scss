@@ -2,10 +2,14 @@
   background: #dcdcdc
 }
 
+.person__form {
+  margin: 1.2em 0;
+}
+
 .people__title {
   color: #b72727;
   font-family: $tahoma;
-  font-size: 1.5em;
+  font-size: 1.8em;
   text-align: center;
   text-transform: uppercase;
 }
@@ -26,7 +30,12 @@
   text-transform: uppercase;
 }
 
+.add-container {
+  text-align: right;
+}
+
 .people__button--add {
+  @include transition(all .3s);
   background-color: #b82929 !important;
   color: #fafeff;
   margin: .5em 0;
@@ -34,10 +43,25 @@
     @include opacity(.65);
   }
 
+  .icon--add {
+    @include transition(all .3s);
+    font-size: 1.2em;
+  }
+
   @media (min-width: $screen-sm-min) {
+    background-color: transparent !important;
+    border: none;
     border-radius: 50%;
-    height: 2.2em;
-    width: 2.2em;
+    position: relative;
+    top: -.1em;
+    height: auto;
+    width: 100%;
+    text-align: right;
+
+    .icon--add {
+      color: #b82929;
+      font-size: 2em;
+    }
   }
 }
 
@@ -54,8 +78,12 @@
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
-  background-position: bottom center;
+  background-position: 0 80%;
   height: 6em;
+
+  @media (min-width: $screen-sm-min) {
+    background-position: 0 65%;
+  }
 
   > .container {
     height: 6em;
@@ -63,6 +91,7 @@
 }
 
 .submit__btn-submit {
+  @include transition(all .5s);
   background: none;
   border: none;
   color: #fafeff;
@@ -74,4 +103,11 @@
   outline: none;
   text-transform: uppercase;
   width: 100%;
+
+  &[disabled] {
+    @include transition(all, .3s);
+    @include opacity(.25);
+    cursor: not-allowed;
+  }
+
 }
