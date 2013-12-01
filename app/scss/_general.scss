@@ -6,9 +6,14 @@ body {
   background: #F9FFFF;
 }
 
-// input.ng-invalid {
-//   border: 1px solid red;
-// }
-// input.ng-valid {
-//   border: 1px solid green;
-// }
+.container {
+  max-width: 60em;
+}
+
+.input-group-addon {
+  background: #fafeff;
+}
+
+.submit-form {
+width: 100%;
+}
