@@ -15,8 +15,8 @@
 .logo__img {
   @include transition(all .5s);
   display: block;
-  margin: 1em auto;
-  width: 7.5em;
+  margin: .4em auto;
+  width: 9em;
 
   @media (min-width: $screen-sm-min) {
     @include transition(all .5s);
