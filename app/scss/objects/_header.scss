@@ -1,4 +1,5 @@
 .header {
+  @include clearfix;
   @include transition(all .5s);
   background-image: url('../img/header.jpg');
   background-repeat: no-repeat;
