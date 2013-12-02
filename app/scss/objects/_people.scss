@@ -10,6 +10,8 @@
   color: #b72727;
   font-family: $tahoma;
   font-size: 1.8em;
+  font-weight: bold;
+  margin-bottom: 1em;
   text-align: center;
   text-transform: uppercase;
 }
@@ -28,10 +30,11 @@
   font-family: $tahoma;
   margin: .5em 0;
   text-transform: uppercase;
-}
 
-.add-container {
-  text-align: right;
+  &:focus {
+    border: none;
+    outline: none;
+  }
 }
 
 .people__button--add {
@@ -56,8 +59,7 @@
     position: relative;
     top: -.1em;
     height: auto;
-    width: 100%;
-    text-align: right;
+    width: 4em;
 
     .icon--add {
       color: #b82929;
