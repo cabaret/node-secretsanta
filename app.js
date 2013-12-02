@@ -9,6 +9,10 @@ var express = require('express')
   , path = require('path');
 
 var app = express();
+var ga = {
+  code: process.env.GA_CODE,
+  url: process.env.GA_URL
+};
 
 if(app.get('env') == 'production') {
   require('newrelic');
@@ -30,7 +34,7 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', routes.index(app.get('env')));
+app.get('/', routes.index(app.get('env'), ga));
 app.post('/handleEmails', routes.handleEmails);
 
 http.createServer(app).listen(app.get('port'), function(){
