@@ -17,10 +17,10 @@ block content
               ).form-control.event__input.event__input--name
 
           div.form-group.col-xs-12.col-sm-5.col-md-6
-            label(for="date").event__label.col-xs-12 Pick your date
+            label.event__label.col-xs-12 Pick your date
             div.control-group.input-append.col-xs-12
               div.input-group
-                input.form-control.event__input#date(name="date", type="text", ng-model="event.date", data-date-format="dd/mm/yyyy", bs-datepicker)
+                input.form-control.event__input(type="text", ng-model="event.date", data-date-format="dd/mm/yyyy", bs-datepicker)
                 span.input-group-addon
                   i.icon.icon--calendar
 
