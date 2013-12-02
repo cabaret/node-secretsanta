@@ -7,7 +7,7 @@ block content
         form(role="form", name="detailsForm", id="detailsForm", novalidate).details__form
           div.form-group.col-xs-12.event__name
             label(for="eventTitle").col-xs-12.col-sm-4.event__label.event__label--name Event name:
-            div.col-xs-12
+            div.col-xs-12.col-sm-6.col-sm-push-3
               input(type="text",
                     ng-model="event.title",
                     id="eventTitle",
@@ -48,7 +48,7 @@ block content
                     required
               ).form-control.people__input
             label(for="email").col-xs-12.col-sm-1.people__label Email:
-            div.col-xs-12.col-sm-5
+            div.col-xs-12.col-sm-6
               input(type="email",
                     ng-model="newPerson.email",
                     id="email",
@@ -56,7 +56,7 @@ block content
                     placeholder="Someone's email",
                     required
               ).form-control.people__input
-            div.col-xs-12.col-sm-2.add-container
+            div.col-xs-12.col-sm-1
               button(ng-disabled="!personForm.$valid").people__button--add.form-control
                 i.icon--add
 
