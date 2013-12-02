@@ -49,7 +49,7 @@ module.exports = function (grunt) {
           dest: 'app/img/'
         }]
       }
-    }
+    },
     watch: {
       options: {
         nospawn: true,
