@@ -45,9 +45,6 @@ html(class="no-js", lang="en")
     block content
 
     footer.footer.col-xs-12
-      a.twitter-share-button(href="https://twitter.com/share", data-text="Memo from Santa: my new favourite Secret Santa organiser!", data-hashtags="memofromsanta", data-dnt="true") Tweet
-      div.fb-share-button(data-href="http://memofromsanta.com", data-width="40", data-type="button_count")
-
       div.col-xs-12.col-sm-6.col-md-3.col-md-push-3.credit.joris
         p.credit__author Joris Ooms
         p.credit__skill Development
@@ -67,6 +64,11 @@ html(class="no-js", lang="en")
                 a(href="#{network.url}", title="#{network.name}", target="_blank")
                   i(class="social__icon icon--#{network.name}")
 
+      div.col-xs-12.social-shares
+        div.col-xs-6.col-md-1.col-md-push-5.social-shares__share
+          a.twitter-share-button(href="https://twitter.com/share", data-text="Memo from Santa: my new favourite Secret Santa organiser!", data-hashtags="memofromsanta", data-dnt="true") Tweet
+        div.col-xs-6.col-md-1.col-md-push-5.social-shares__share
+          div.fb-share-button(data-href="http://memofromsanta.com", data-width="40", data-type="button_count")
 
     if env === 'development'
       script(src='http://localhost:35729/livereload.js')
