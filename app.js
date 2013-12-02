@@ -2,9 +2,6 @@
 /**
  * Module dependencies.
  */
-if(app.get('env') == 'production') {
-  require('newrelic');
-}
 
 var express = require('express')
   , routes = require('./routes')
@@ -12,6 +9,10 @@ var express = require('express')
   , path = require('path');
 
 var app = express();
+
+if(app.get('env') == 'production') {
+  require('newrelic');
+}
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3005);
