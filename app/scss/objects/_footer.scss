@@ -7,6 +7,17 @@
   }
 }
 
+.with-love {
+  color: #fff;
+  font-size: .8em;
+  margin-top: 2rem;
+  text-align: center;
+
+  .heart {
+    color: #ff5460;
+  }
+}
+
 .credit {
   text-align: center;
   &:first-child {
@@ -42,7 +53,7 @@
 }
 
 .social__icon {
-  @include transition(top .2s ease-in-out);
+  @include transition(top .1s ease-in-out);
   color: #d7d7d7;
   background: #131313;
   display: inline-block;
@@ -51,7 +62,7 @@
   position: relative;
 
   &:hover {
-    @include transition(top .2s ease-in-out);
+    @include transition(top .1s ease-in-out);
     top: -.1em;
   }
 }
