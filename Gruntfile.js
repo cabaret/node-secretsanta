@@ -35,6 +35,21 @@ module.exports = function (grunt) {
         }
       }
     },
+    imagemin: {
+      static: {
+        options: {
+          optimizationLevel: 3
+        },
+      },
+      dynamic: {
+        files: [{
+          expand: true,
+          cwd: 'app/img/',
+          src: ['**/*.{png,jpg,gif}'],
+          dest: 'app/img/'
+        }]
+      }
+    }
     watch: {
       options: {
         nospawn: true,
@@ -89,5 +104,5 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('default', ['develop', 'watch']);
-  grunt.registerTask('build', ['jadeUsemin'])
+  grunt.registerTask('build', ['jadeUsemin', 'imagemin'])
 };
