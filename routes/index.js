@@ -8,7 +8,7 @@ var _ = require('underscore');
 
 exports.index = function(env) {
   return function(req, res) {
-    res.render('index', { title: 'node-secretsanta', env: env });
+    res.render('index', { title: 'A memo from Santa!', env: env });
   }
 };
 
