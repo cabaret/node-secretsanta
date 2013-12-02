@@ -1,7 +1,7 @@
 @import 'config/animations';
 @import 'config/fonts';
 
-@import "../vendor/sass-bootstrap/lib/variables";
+@import "../vendor/sass-bootstrap/lib/bootstrap";
 @import "../vendor/sass-bootstrap/lib/mixins";
 @import "../vendor/sass-bootstrap/lib/normalize";
 @import "../vendor/sass-bootstrap/lib/print";
@@ -9,6 +9,7 @@
 @import "../vendor/sass-bootstrap/lib/type";
 @import "../vendor/sass-bootstrap/lib/grid";
 @import "../vendor/sass-bootstrap/lib/forms";
+@import "../vendor/sass-bootstrap/lib/popovers";
 @import "../vendor/sass-bootstrap/lib/component-animations";
 @import "../vendor/sass-bootstrap/lib/input-groups";
 @import "../vendor/sass-bootstrap/lib/utilities";
