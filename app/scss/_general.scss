@@ -19,3 +19,7 @@ body {
 .submit-form {
 width: 100%;
 }
+
+.disable-hover {
+  pointer-events: none;
+}

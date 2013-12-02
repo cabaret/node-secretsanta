@@ -2,7 +2,6 @@
 
 angular.module('SecretSantaApp.controllers', [])
   .controller('eventController', function($scope, emailAPIService, _) {
-    $('.slider').slider();
 
     $scope.event = {
       title: '',
@@ -46,4 +45,23 @@ angular.module('SecretSantaApp.controllers', [])
       _.extend(postData, { event: $scope.event }, { people: $scope.people });
       emailAPIService.postEmails(postData);
     };
+
+
+    /* TODO: figure out where to put this */
+    var body = document.body,
+    timer;
+
+    window.addEventListener('scroll', function() {
+      clearTimeout(timer);
+      if(!body.classList.contains('disable-hover')) {
+        body.classList.add('disable-hover')
+      }
+
+      var timer = setTimeout(function(){
+        body.classList.remove('disable-hover')
+      },500);
+    }, false);
+
+    $('.slider').slider();
+    /* /TODO */
   });
