@@ -25,12 +25,15 @@
 }
 
 .event__input--textarea {
+  font-family: $tahoma;
+  color: #555;
   height: 7.5em !important;
   resize: none;
 
   &:focus {
     outline: none;
     border: none;
+    box-shadow: none;
   }
 }
 
@@ -40,25 +43,29 @@
 
 .event__input--name {
   @include placeholder {
+    @include opacity(.5);
     color: #fafeff;
-    text-decoration: underline;
   }
   border: none;
+  border-bottom: 2px solid #fafeff;
   border-radius: 0;
   background: none;
   box-shadow: none;
   color: #fafeff;
   font-family: $tahoma;
+  font-weight: bold;
   font-size: 1.8em;
   height: 1.8em;
-  margin: 0 auto;
+  margin: 0 auto .5em auto;
   outline: none;
   text-align: center;
-  text-decoration: underline;
   text-transform: uppercase;
 
   &:focus {
-    border: none;
+    @include placeholder {
+      color: transparent;
+    }
+    border-bottom: 2px solid #fafeff;
     box-shadow: none;
     outline: none;
   }
