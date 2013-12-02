@@ -29,6 +29,9 @@
   color: #555;
   height: 7.5em !important;
   resize: none;
+  border: none;
+  box-shadow: none;
+  outline: none;
 
   &:focus {
     outline: none;
