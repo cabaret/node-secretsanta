@@ -31,10 +31,13 @@ html(class="no-js", lang="en")
           span.headline Help, Santa Claus has lost his reindeer!
           | He won't be able to deliver presents in time. Will you help him out?
           | Fill in the names of you and your friends and the details of your Christmas party.
+          | We'll make sure everyone knows whom to buy a present for!
 
     block content
 
     footer.footer.col-xs-12
+      p.col-xs-12.with-love with
+        span.heart  ♥
       div.col-xs-12.col-sm-6.col-md-3.col-md-push-3.credit
         p.credit__author Joris Ooms
         p.credit__skill Development
@@ -42,7 +45,7 @@ html(class="no-js", lang="en")
           - var social = [{ 'name': 'github', 'url': 'https://github.com/cabaret' }, {'name': 'twitter', 'url': 'https://twitter.com/ontolecabaret' }, {'name': 'linkedin', 'url': 'http://www.linkedin.com/in/oomsjoris' }, { 'name': 'instagram', 'url': 'http://instagram.com/dinosaursinspace' }]
           - for network in social
               li.social__item
-                a(href="#{network.url}", title="#{network.name}")
+                a(href="#{network.url}", title="#{network.name}", target="_blank")
                   i(class="social__icon icon--#{network.name}")
       div.col-xs-12.col-sm-6.col-md-3.col-md-push-3.credit
         p.credit__author Seeger Mattijs
@@ -51,7 +54,7 @@ html(class="no-js", lang="en")
           - var social = [{ 'name': 'dribbble', 'url': 'http://dribbble.com/seegermattijs' }, { 'name': 'twitter', 'url': 'https://twitter.com/SeegerMattijs' }, { 'name': 'linkedin', 'url': 'http://be.linkedin.com/pub/seeger-mattijs/48/284/745' }, { 'name': 'instagram', 'url': 'http://instagram.com/seegermattijs' }]
           - for network in social
               li.social__item
-                a(href="#{network.url}", title="#{network.name}")
+                a(href="#{network.url}", title="#{network.name}", target="_blank")
                   i(class="social__icon icon--#{network.name}")
 
     script(src='http://localhost:35729/livereload.js')
