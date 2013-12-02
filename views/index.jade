@@ -20,18 +20,18 @@ block content
             label(for="date").event__label.col-xs-12 Pick your date
             div.control-group.input-append.col-xs-12
               div.input-group
-                input.form-control.event__input(type="text", ng-model="event.date", data-date-format="dd/mm/yyyy", bs-datepicker)
+                input.form-control.event__input#date(name="date", type="text", ng-model="event.date", data-date-format="dd/mm/yyyy", bs-datepicker)
                 span.input-group-addon
                   i.icon.icon--calendar
 
           div.form-group.col-xs-12.col-sm-7.col-md-5.col-md-push-1
-            label(for="").event__label.col-xs-12 Amount of cash to spend: &euro; {{ event.cashAmount }}
+            label.event__label.col-xs-12 Amount of cash to spend: &euro; {{ event.cashAmount }}
             div.slider.col-xs-12(ui-slider="slider.options",  min="0", max="100", step="1", ng-model="event.cashAmount")
 
           div.form-group.col-xs-12
             label(for="message").col-xs-12.event__label Message
             div.col-xs-12
-              textarea(name='message', ng-model="event.message", noresize).form-control.event__input--textarea
+              textarea#message(name='message', ng-model="event.message", noresize).form-control.event__input--textarea
 
     section.people
       div.container

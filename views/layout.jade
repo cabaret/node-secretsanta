@@ -16,6 +16,10 @@ html(class="no-js", lang="en")
     meta(name="description", content="Memo from Santa")
     meta(name="author", content="Joris Ooms & Seeger Mattijs")
 
+    - var site = {title: 'Memo from Santa', url: 'http://memofromsanta.com', image: '/img/memo.jpg', favicon: '/favicon.ico', description: 'Memo from Santa! Help Santa out by organising your own Secret Santa party!'}
+    each val, key in site
+      meta(property='og:'+'#{key}', content='#{val}')
+
     title=title
     if env === 'development'
       //- build:css app/css/santa.min.css
@@ -43,8 +47,7 @@ html(class="no-js", lang="en")
     footer.footer.col-xs-12
       a.twitter-share-button(href="https://twitter.com/share", data-text="Memo from Santa: my new favourite Secret Santa organiser!", data-hashtags="memofromsanta", data-dnt="true") Tweet
       div.fb-share-button(data-href="http://memofromsanta.com", data-width="40", data-type="button_count")
-      p.col-xs-12.with-love with
-        span.heart  ♥
+
       div.col-xs-12.col-sm-6.col-md-3.col-md-push-3.credit
         p.credit__author Joris Ooms
         p.credit__skill Development
@@ -65,45 +68,45 @@ html(class="no-js", lang="en")
                   i(class="social__icon icon--#{network.name}")
 
 
-  if env === 'development'
-    script(src='http://localhost:35729/livereload.js')
-    //- build:js app/js/santa.min.js
-    script(src='/vendor/jquery/jquery.min.js')
-    script(src='/vendor/jquery-ui/ui/minified/jquery-ui.min.js')
-    script(src='/vendor/jquery-ui-touch-punch/jquery.ui.touch-punch.js')
-    script(src="/vendor/sass-bootstrap/dist/js/bootstrap.min.js")
-    script(src='/vendor/angular/angular.js')
-    script(src='/vendor/angular-ui-slider/src/slider.js')
-    script(src='/vendor/angular-strap/dist/angular-strap.min.js')
-    script(src='/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js')
-    script(src='/vendor/underscore/underscore-min.js')
-    script(src='/vendor/angular-underscore-module/angular-underscore-module.js')
-    script(src='/vendor/Socialite/socialite.min.js')
-    script(src='/js/app.js')
-    script(src='/js/services.js')
-    script(src='/js/controllers.js')
-    script(src='/js/directives.js')
-    //- endbuild
-  else
-    script(src='/js/santa.min.js')
-    script.
-      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
-      if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
-      fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-    script.
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    if env === 'development'
+      script(src='http://localhost:35729/livereload.js')
+      //- build:js app/js/santa.min.js
+      script(src='/vendor/jquery/jquery.min.js')
+      script(src='/vendor/jquery-ui/ui/minified/jquery-ui.min.js')
+      script(src='/vendor/jquery-ui-touch-punch/jquery.ui.touch-punch.js')
+      script(src="/vendor/sass-bootstrap/dist/js/bootstrap.min.js")
+      script(src='/vendor/angular/angular.js')
+      script(src='/vendor/angular-ui-slider/src/slider.js')
+      script(src='/vendor/angular-strap/dist/angular-strap.min.js')
+      script(src='/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js')
+      script(src='/vendor/underscore/underscore-min.js')
+      script(src='/vendor/angular-underscore-module/angular-underscore-module.js')
+      script(src='/vendor/Socialite/socialite.min.js')
+      script(src='/js/app.js')
+      script(src='/js/services.js')
+      script(src='/js/controllers.js')
+      script(src='/js/directives.js')
+      //- endbuild
+    else
+      script(src='/js/santa.min.js')
+      script.
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+        if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
+        fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+      script.
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', '#{ga.code}', '#{ga.url}');
-      ga('send', 'pageview');
-    div#fb-root
-    script.
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=368006643310023";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
+        ga('create', '#{ga.code}', '#{ga.url}');
+        ga('send', 'pageview');
+      div#fb-root
+      script.
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=389376211197256";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
