@@ -42,7 +42,7 @@ angular.module('SecretSantaApp.controllers', [])
     $scope.submitEvent = function() {
       var postData = {};
 
-      window._gaq.push(['_trackEvent', 'sendNames', 'clickSubmit');
+      window._gaq.push(['_trackEvent', 'sendNames', 'clickSubmit']);
 
       _.extend(postData, { event: $scope.event }, { people: $scope.people });
       emailAPIService.postEmails(postData);
