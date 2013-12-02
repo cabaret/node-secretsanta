@@ -2,8 +2,9 @@
 /**
  * Module dependencies.
  */
-
-require('newrelic');
+if(app.get('env') == 'production') {
+  require('newrelic');
+}
 
 var express = require('express')
   , routes = require('./routes')
