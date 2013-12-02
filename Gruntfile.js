@@ -27,6 +27,14 @@ module.exports = function (grunt) {
         }
       }
     },
+    jadeUsemin: {
+      main: {
+        options: {},
+        files: {
+          src: ['views/layout.jade']
+        }
+      }
+    },
     watch: {
       options: {
         nospawn: true,
@@ -81,4 +89,5 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('default', ['develop', 'watch']);
+  grunt.registerTask('build', ['jadeUsemin'])
 };

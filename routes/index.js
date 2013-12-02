@@ -6,8 +6,10 @@
 var _ = require('underscore');
 
 
-exports.index = function(req, res){
-  res.render('index', { title: 'node-secretsanta' });
+exports.index = function(env) {
+  return function(req, res) {
+    res.render('index', { title: 'node-secretsanta', env: env });
+  }
 };
 
 exports.handleEmails = function(req, res) {

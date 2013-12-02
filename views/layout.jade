@@ -17,8 +17,13 @@ html(class="no-js", lang="en")
     meta(name="author", content="Joris Ooms & Seeger Mattijs")
 
     title=title
-    link(rel="stylesheet", href="/css/jquery-ui.min.css")
-    link(rel='stylesheet', href='/css/main.css')
+    if env === 'development'
+      //- build:css app/css/santa.min.css
+      link(rel="stylesheet", href="/css/jquery-ui.min.css")
+      link(rel='stylesheet', href='/css/main.css')
+      //- endbuild
+    else
+      link(rel="stylesheet", href="/css/santa.min.css")
 
   body(ng-app="SecretSantaApp")
     header.header
@@ -57,7 +62,10 @@ html(class="no-js", lang="en")
                 a(href="#{network.url}", title="#{network.name}", target="_blank")
                   i(class="social__icon icon--#{network.name}")
 
+
+  if env === 'development'
     script(src='http://localhost:35729/livereload.js')
+    //- build:js app/js/santa.min.js
     script(src='/vendor/jquery/jquery.min.js')
     script(src='/vendor/jquery-ui/ui/minified/jquery-ui.min.js')
     script(src='/vendor/jquery-ui-touch-punch/jquery.ui.touch-punch.js')
@@ -72,3 +80,8 @@ html(class="no-js", lang="en")
     script(src='/js/services.js')
     script(src='/js/controllers.js')
     script(src='/js/directives.js')
+    //- endbuild
+  else
+    script(src='/js/santa.min.js')
+
+

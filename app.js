@@ -28,7 +28,7 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', routes.index);
+app.get('/', routes.index(app.get('env')));
 app.post('/handleEmails', routes.handleEmails);
 
 http.createServer(app).listen(app.get('port'), function(){
