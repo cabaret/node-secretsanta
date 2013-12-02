@@ -3,4 +3,5 @@ config/deploy.rb
 app/vendor/
 node_modules/
 newrelic_agent.log
-
+app/css/santa.min.css
+app/js/santa.min.js

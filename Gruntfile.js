@@ -102,5 +102,5 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('default', ['develop', 'watch']);
-  grunt.registerTask('build', ['jadeUsemin', 'imagemin'])
+  grunt.registerTask('build', ['sass', 'jadeUsemin', 'imagemin'])
 };
