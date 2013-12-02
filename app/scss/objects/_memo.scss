@@ -2,19 +2,26 @@
   background: #fafeff;
   color: #515151;
   font-family: $wisdom;
-  font-size: 1.8em;
+  font-size: 1.4em;
   margin: 0;
   padding: 1em 0;
 
   @media (min-width: $screen-sm-min) {
     background-image: url('../img/paper.jpg');
     background-repeat: repeat;
-    line-height: 1.63em;
-    padding: 1.5em 0;
+    background-position: 1em 0;
+    line-height: 1.65em;
+    font-size: 1.8em;
+    padding: 1.65em 0 .8em 0;
   }
 }
 
 .headline {
   color: #b72828;
   display: block;
+  font-size: 1.6em;
+
+  @media (min-width: $screen-sm-min) {
+    font-size: 1.8rem;
+  }
 }
