@@ -9,7 +9,8 @@
 
 .credit {
   text-align: center;
-  &:first-child {
+
+  &.joris {
     padding-bottom: 2em;
 
     @media (min-width: $screen-sm-min) {
