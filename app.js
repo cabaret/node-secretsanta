@@ -33,7 +33,7 @@ app.configure(function(){
   app.set('mailOptions', {
     host:    'localhost',
     port:    '25',
-    from:    'nodepad@example.com',
+    from:    'santa@memofromsanta.com',
   });
 });
 
@@ -42,42 +42,6 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index(app.get('env'), ga));
-
-emails = {
-  send: function(template, mailOptions, templateOptions) {
-    mailOptions.to = mailOptions.to;
-    jade.renderFile(path.join(__dirname, 'views', 'mailer', template), templateOptions, function(err, text) {
-      // Add the rendered Jade template to the mailOptions
-      mailOptions.body = text;
-
-      // Merge the app's mail options
-      var keys = Object.keys(app.set('mailOptions')),
-          k;
-      for (var i = 0, len = keys.length; i < len; i++) {
-        k = keys[i];
-        if (!mailOptions.hasOwnProperty(k))
-          mailOptions[k] = app.set('mailOptions')[k]
-      }
-
-      console.log('[SENDING MAIL]', sys.inspect(mailOptions));
-
-      // Only send mails in production
-      if (app.settings.env == 'production') {
-        mailer.send(mailOptions,
-          function(err, result) {
-            if (err) {
-              console.log(err);
-            }
-          }
-        );
-      }
-    });
-  },
-
-  sendWelcome: function(user) {
-    this.send('welcome.jade', { to: user.email, subject: 'Welcome to Nodepad' }, { locals: { user: user } });
-  }
-};
 
 secretSanta = function(data) {
   var givers = data.people,
