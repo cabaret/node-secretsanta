@@ -25,7 +25,7 @@ block content
                 span.input-group-addon
                   i.icon.icon--calendar
 
-          div.form-group.col-xs-12.col-sm-7.col-md-5.col-md-push-1
+          div.form-group.col-xs-12.col-sm-7.col-md-6
             label.event__label.col-xs-12 Amount of cash to spend: &euro;&nbsp;{{ event.cashAmount }}
             div.slider-wrap
               div.slider.col-xs-12(ui-slider="slider.options",  min="0", max="100", step="1", ng-model="event.cashAmount")
@@ -39,9 +39,9 @@ block content
       div.container
         form(role="form", id="personForm", name="personForm", ng-submit="addPerson(newPerson)", novalidate).person__form.clearfix
           h2.people__title Add people
-          div.form-group.col-xs-12
+          div.form-group.col-xs-12.col-sm-5.col-md-6
             label(for="name").col-xs-12.col-sm-1.people__label Name:
-            div.col-xs-12.col-sm-5
+            div.col-xs-12
               input(type="text",
                     ng-model="newPerson.name",
                     id="name",
@@ -49,8 +49,9 @@ block content
                     placeholder="Someone's name",
                     required
               ).form-control.people__input
+          div.form-group.col-xs-12.col-sm-5
             label(for="email").col-xs-12.col-sm-1.people__label Email:
-            div.col-xs-12.col-sm-6
+            div.col-xs-12
               input(type="email",
                     ng-model="newPerson.email",
                     id="email",
@@ -58,7 +59,8 @@ block content
                     placeholder="Someone's email",
                     required
               ).form-control.people__input
-            div.col-xs-12.col-sm-1
+          div.form-group.col-xs-12.col-sm-2.col-md-1.add
+            div.col-xs-12
               button(ng-disabled="!personForm.$valid").people__button--add.form-control
                 i.icon--add
 

@@ -190,3 +190,14 @@
     font-size: 2em;
   }
 }
+
+.add {
+  @media (min-width: $screen-sm-min) {
+    padding-left: 30px;
+  }
+  @media (min-width: $screen-md-min) {
+    padding: 0 !important;
+    position: relative;
+    left: -20px;
+  }
+}
