@@ -1,3 +1,21 @@
+.animate-enter {
+  @include transition(.5s linear all);
+  opacity: 0;
+
+  &.animate-enter-active {
+    opacity: 1;
+  }
+}
+
+.animate-leave {
+  @include transition(.5s linear all);
+  opacity: 1;
+
+  &.animate-enter-active {
+    opacity: 0;
+  }
+}
+
 .people {
   background: #dcdcdc;
 }

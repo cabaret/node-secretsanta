@@ -65,7 +65,7 @@ block content
                 i.icon--add
 
           div.added-people
-            person.col-xs-12(ng-repeat="person in people")
+            person.col-xs-12(ng-repeat="person in people", ng-animate="{enter: 'animate-enter'}")
 
     section.submit
       div.container
