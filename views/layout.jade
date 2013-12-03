@@ -16,7 +16,7 @@ html(class="no-js", lang="en")
     meta(name="description", content="Memo from Santa")
     meta(name="author", content="Joris Ooms & Seeger Mattijs")
 
-    - var site = {title: 'Memo from Santa', url: 'http://memofromsanta.com', image: '/img/memo.jpg', favicon: '/favicon.ico', description: 'Memo from Santa! Help Santa out by organising your own Secret Santa party!'}
+    - var site = {title: 'Memo from Santa', url: 'http://memofromsanta.com', image: '/img/og.jpg', favicon: '/favicon.ico', description: 'Memo from Santa! Help Santa out by organising your own Secret Santa party!'}
     each val, key in site
       meta(property='og:'+'#{key}', content='#{val}')
 
@@ -36,7 +36,7 @@ html(class="no-js", lang="en")
 
     section.memo
       div.container
-        p.col-xs-12
+        p.col-xs-12.memo__letter
           span.headline Help, Santa Claus has lost his reindeer!
           | He won't be able to deliver presents in time. Will you help him out?
           | Fill in the names of you and your friends and the details of your Christmas party.
@@ -64,11 +64,15 @@ html(class="no-js", lang="en")
                 a(href="#{network.url}", title="#{network.name}", target="_blank")
                   i(class="social__icon icon--#{network.name}")
 
+
       div.col-xs-12.social-shares
-        div.col-xs-6.col-md-1.col-md-push-5.social-shares__share
-          a.twitter-share-button(href="https://twitter.com/share", data-text="Memo from Santa: my new favourite Secret Santa organiser!", data-hashtags="memofromsanta", data-dnt="true") Tweet
-        div.col-xs-6.col-md-1.col-md-push-5.social-shares__share
-          div.fb-share-button(data-href="http://memofromsanta.com", data-width="40", data-type="button_count")
+        div.addthis_toolbox.addthis_default_style.col-xs-3.col-xs-push-5
+          a.addthis_button_preferred_1
+          a.addthis_button_preferred_2
+          a.addthis_button_preferred_3
+          a.addthis_button_preferred_4
+          a.addthis_button_compact
+          a.addthis_counter.addthis_bubble_style
 
     if env === 'development'
       script(src='http://localhost:35729/livereload.js')
@@ -91,23 +95,12 @@ html(class="no-js", lang="en")
     else
       script(src='/js/santa.min.js')
       script.
-        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
-        if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
-        fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-      script.
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        var addthis_share = {
+          url: "http://memofromsanta.com",
+          description: "Memo from Santa! Help Santa out by organising your own Secret Santa party!"
+          templates: {
+            twitter: 'Memo from Santa! Help Santa out by organising your own Secret Santa party! {{url}} #memofromsanta',}
+          }
+        }
+      script(src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-529dd1ce6158d340")
 
-        ga('create', '#{ga.code}', '#{ga.url}');
-        ga('send', 'pageview');
-      div#fb-root
-      script.
-        (function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=389376211197256";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
