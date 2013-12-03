@@ -50,6 +50,8 @@ angular.module('SecretSantaApp.controllers', [])
 
 
     /* TODO: figure out where to put this */
+    $('.addthis_toolbox').width($('.addthis_toolbox').outerWidth());
+
     var body = document.body,
     timer;
 
