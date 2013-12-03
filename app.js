@@ -3,22 +3,26 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , routes = require('./routes')
-  , http = require('http')
-  , path = require('path')
-  , _ = require('underscore')
-  , emails, secretSanta;
+ var express = require('express'),
+ routes = require('./routes'),
+ http = require('http'),
+ path = require('path'),
+ _ = require('underscore'),
+ nodemailer = require('nodemailer'),
+ emailTemplates = require('email-templates'),
+ templatesDir = path.resolve(__dirname, '.', 'templates'),
+ emails, secretSanta, app, ga;
 
-var app = express();
-var ga = {
+ app = express();
+
+ if(app.get('env') == 'production') {
+  require('newrelic');
+}
+
+ga = {
   code: process.env.GA_CODE,
   url: process.env.GA_URL
 };
-
-if(app.get('env') == 'production') {
-  require('newrelic');
-}
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3005);
@@ -31,9 +35,9 @@ app.configure(function(){
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'app')));
   app.set('mailOptions', {
-    host:    'localhost',
-    port:    '25',
-    from:    'santa@memofromsanta.com',
+    host:  'localhost',
+    port:  '25',
+    from:  'santa@memofromsanta.com'
   });
 });
 
@@ -45,9 +49,9 @@ app.get('/', routes.index(app.get('env'), ga));
 
 secretSanta = function(data) {
   var givers = data.people,
-      takers = _.clone(givers),
-      matches = [],
-      i;
+  takers = _.clone(givers),
+  matches = [],
+  i;
 
   for(i = 0; i < data.people.length; i++) {
     // can probably be done way better but hey, quick hack for now..
@@ -70,13 +74,62 @@ secretSanta = function(data) {
   return matches;
 };
 
+
+
 app.post('/handleEmails', function(req, res) {
-  var postData = req.body,
-      mailData = {};
-  mailData.event = postData.event;
-  // mailData.matches = secretSanta(postData);
-  console.log(secretSanta(postData));
-  res.json(secretSanta(postData));
+
+  // console.log(templatesDir);
+  // var postData = req.body,
+  //     mailData = {};
+  // mailData.event = postData.event;
+  // // mailData.matches = secretSanta(postData);
+  // console.log(secretSanta(postData));
+  // res.json(secretSanta(postData));
+  emailTemplates(templatesDir, function(err, template) {
+    if (err) {
+      console.log(err);
+    } else {
+      var transport = nodemailer.createTransport("SMTP", {
+        service: 'Mailgun',
+        auth: {
+          user: process.env.MAILGUN_USER,
+          pass: process.env.MAILGUN_PASS
+        }
+      });
+
+      var locals = {
+        email: 'info@jorisooms.be',
+        name: 'Joris',
+        buyFor: 'Seeger',
+        event: {
+          date: '25 dec 2013',
+          cash: '15 EUR',
+          name: 'Partijtje'
+        }
+      };
+
+      template('invitation', locals, function(err, html, text) {
+        if (err) {
+          console.log(err);
+        } else {
+          transport.sendMail({
+            from: 'Santa Claus <santa@memofromsanta.com>',
+            to: locals.email,
+            subject: 'Party: ' + locals.event.name,
+            html: html,
+            generateTextFromHTML: true,
+            text: text
+          }, function(err, responseStatus) {
+            if (err) {
+              console.log(err);
+            } else {
+              console.log(responseStatus.message);
+            }
+          });
+        }
+      });
+    }
+  });
 });
 
 
