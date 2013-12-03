@@ -46,11 +46,10 @@
 
 .event__input--name {
   @include placeholder {
-    @include opacity(.5);
     color: #fafeff;
   }
   border: none;
-  border-bottom: 2px solid #fafeff;
+  border-bottom: .15em solid #671717;
   border-radius: 0;
   background: none;
   box-shadow: none;
@@ -68,7 +67,7 @@
     @include placeholder {
       color: transparent;
     }
-    border-bottom: 2px solid #fafeff;
+    border-bottom: .15em solid #671717;
     box-shadow: none;
     outline: none;
   }

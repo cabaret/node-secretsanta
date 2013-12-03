@@ -123,7 +123,7 @@
 .added-person {
   font-family: $tahoma;
   font-weight: bold;
-  font-size: 1em;
+  font-size: .8em;
   text-transform: uppercase;
   margin: 0;
   padding: 0 15px;
@@ -131,7 +131,7 @@
 
   @media (min-width: $screen-sm-min) {
     padding-left: 0!important;
-    font-size: 1.3em;
+    font-size: 1.3rem;
   }
 }
 
@@ -140,6 +140,11 @@
 }
 .added-person__email {
   color: #671717;
+  word-break: break-word;
+
+  @media (min-width: $screen-sm-min) {
+    font-size: 1.3rem;
+  }
 }
 
 
