@@ -98,7 +98,7 @@ app.post('/handleEmails', function(req, res) {
       });
 
       var locals = {
-        email: 'info@jorisooms.be',
+        email: 'jorisheeft@gmail.com',
         name: 'Joris',
         buyFor: 'Seeger',
         event: {
