@@ -4,7 +4,7 @@ angular.module('SecretSantaApp.controllers', [])
   .controller('eventController', function($scope, emailAPIService, _) {
 
     $scope.event = {
-      title: '',
+      title: null,
       cashAmount: 15,
       cashCurrency: 'eur',
       date: new Date("2013-12-25T00:00:00.000Z"),
@@ -22,8 +22,27 @@ angular.module('SecretSantaApp.controllers', [])
       }
     }
 
+    $scope.errors = {
+      'title': 'Please provide an event title.',
+      'people': 'Please add at least 3 people',
+      'ok': 'Send to santa!'
+    }
+
+    $scope.currentError = $scope.errors.title;
+
+    $scope.checkErrors = function() {
+      if(! $scope.event.title) {
+        $scope.currentError = $scope.errors.title;
+      } else if($scope.people.length < 3) {
+        $scope.currentError = $scope.errors.people;
+      } else {
+        $scope.currentError = $scope.errors.ok;
+      }
+    };
+
     $scope.addPerson = function(person) {
       $scope.people.push(person);
+      $scope.checkErrors();
       $scope.newPerson = {};
     };
 
