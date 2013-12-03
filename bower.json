@@ -16,5 +16,8 @@
     "angular-ui-slider": "~0.0.1",
     "jquery-ui-touch-punch": "*",
     "angular": "angular-unstable#~1.1.5"
+  },
+  "resolutions": {
+    "angular": "~1.1.5"
   }
 }
