@@ -25,7 +25,7 @@ block content
                   i.icon.icon--calendar
 
           div.form-group.col-xs-12.col-sm-7.col-md-5.col-md-push-1
-            label.event__label.col-xs-12 Amount of cash to spend: &euro; {{ event.cashAmount }}
+            label.event__label.col-xs-12 Amount of cash to spend: &euro;&nbsp;{{ event.cashAmount }}
             div.slider-wrap
               div.slider.col-xs-12(ui-slider="slider.options",  min="0", max="100", step="1", ng-model="event.cashAmount")
 
@@ -62,7 +62,7 @@ block content
                 i.icon--add
 
           div.added-people
-            person.row(ng-repeat="person in people")
+            person.col-xs-12(ng-repeat="person in people")
 
     section.submit
       div.container

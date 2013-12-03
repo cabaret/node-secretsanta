@@ -68,9 +68,68 @@
   }
 }
 
+.people__button--remove {
+  @include transition(all .3s);
+  background-color: #b82929 !important;
+  box-shadow: none;
+  color: #fafeff;
+  margin: .2em 0 1.2em 0;
+  width: 100%;
+
+
+  .icon--remove {
+    @include transition(all .3s);
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    background-color: transparent !important;
+    border: none;
+    border-radius: 50%;
+    position: relative;
+    top: -.35em;
+    width: auto;
+
+    .icon--remove {
+      color: #b82929;
+      font-size: 1.3em;
+    }
+  }
+}
+
 .added-people {
   margin-top: 2em;
 }
+
+.added-person__button-wrap {
+  @media (min-width: $screen-sm-min) {
+    padding-left: .2em;
+  }
+}
+
+.added-person {
+  font-family: $tahoma;
+  font-weight: bold;
+  font-size: 1em;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0 15px;
+  display: inline-block;
+
+  @media (min-width: $screen-sm-min) {
+    padding-left: 0!important;
+    font-size: 1.3em;
+  }
+}
+
+.added-person__name {
+  color: #b72828
+}
+.added-person__email {
+  color: #671717;
+}
+
 
 .submit {
   @include clearfix;
