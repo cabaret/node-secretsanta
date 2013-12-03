@@ -32,6 +32,7 @@
   text-transform: uppercase;
 
   &:focus {
+    box-shadow: none;
     border: none;
     outline: none;
   }
@@ -45,6 +46,12 @@
   margin: .5em 0;
   &[disabled] {
     @include opacity(.65);
+  }
+
+  &:focus {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
   }
 
   .icon--add {
@@ -76,6 +83,11 @@
   margin: .2em 0 1.2em 0;
   width: 100%;
 
+  &:focus {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
 
   .icon--remove {
     @include transition(all .3s);
