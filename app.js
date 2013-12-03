@@ -24,7 +24,7 @@ app.configure(function(){
   app.set('port', process.env.PORT || 3005);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
-  app.use(express.favicon());
+  app.use(express.favicon(path.join(__dirname, 'app/img/favicon.ico')));
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
@@ -86,7 +86,7 @@ secretSanta = function(data) {
       i;
 
   for(i = 0; i < data.people.length; i++) {
-    // can probably be done way better but hey, quick hack..
+    // can probably be done way better but hey, quick hack for now..
     var tmpGivers, tmpTakers, giver, taker;
     tmpGivers = _.clone(givers);
     tmpTakers = _.clone(takers);
