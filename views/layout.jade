@@ -15,6 +15,7 @@ html(class="no-js", lang="en", xmlns:og="http://opengraphprotocol.org/schema/", 
 
     meta(name="description", content="Memo from Santa")
     meta(name="author", content="Joris Ooms & Seeger Mattijs")
+    meta(property="fb:app_id", content="389376211197256")
 
     - var site = {title: 'Memo from Santa', url: 'http://memofromsanta.com', image: '/img/og.jpg', favicon: '/favicon.ico', description: 'Memo from Santa! Help Santa out by organising your own Secret Santa party!'}
     each val, key in site
@@ -95,7 +96,8 @@ html(class="no-js", lang="en", xmlns:og="http://opengraphprotocol.org/schema/", 
     else
       script(src='/js/santa.min.js')
       script.
-        var addthis_config = {"data_track_addressbar":false};
+        var addthis_config = addthis_config || {};
+        addthis_config.data_track_addressbar = false;
         var addthis_share = {
           url: "http://memofromsanta.com",
           description: "Memo from Santa! Help Santa out by organising your own Secret Santa party!",
