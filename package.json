@@ -11,7 +11,8 @@
     "underscore": "~1.5.2",
     "nodemailer": "~0.5.11",
     "newrelic": "~1.1.1",
-    "node-mailer": "~0.1.1"
+    "node-mailer": "~0.1.1",
+    "email-templates": "~0.1.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
