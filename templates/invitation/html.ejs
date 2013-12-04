@@ -1,24 +1,139 @@
-<html>
-<head></head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>A memo from Santa for you!</title>
+
+  <meta name="title" content="A memo from Santa for you!" />
+
+  <style type="text/css">
+  #outlook a {padding:0;}
+  body{width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0;}
+  #backgroundTable {margin:0; padding:0; width:100% !important; line-height: 100% !important;}
+  img {outline:none; text-decoration:none; -ms-interpolation-mode: bicubic; height:auto; line-height:100%;}
+  a img {border:none;}
+  table { border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; }
+  table td {border-collapse: collapse;}
+  .appleLinks a {color:#000;}
+
+  @media screen and (max-width: 800px) {
+    table[class="table__container"] {
+      width: 100% !important;
+    }
+    table[class="table__container--padded"] {
+      width: 90% !important;
+    }
+    td[class="table__columns--one"], *[class="table__columns-wrapper"], *[class="table__columns-wrapper"] table, *[class="table__columns-wrapper"] td {
+      width: 100%  !important;
+    }
+    td[class="table__columns--two"] {
+      width: 100% !important;
+      display: block;
+    }
+    img[class="image--full-width"] {
+      width: 100% !important;
+    }
+    *[class="small-screen--hidden"] {
+      display: none !important;
+      mso-hide: all;
+    }
+}
+</style>
+</head>
 <body>
-<h1>Memo from Santa</h1>
-
-<p>Dear <strong><%= name %>,</p>
-<p>I have lost my reindeer and will not be able to deliver presents this year. Will you help me out?</p>
-<p>
-  My elves told me you will be going to a Christmas Party ('<%= event.name %>') on <%= event.date %>. Could you please buy a present for <%= buyFor %>? The maximum amount of money to spend is &euro; <%= event.cash %>.
-</p>
-
-<p>
-  I will be very grateful if you could be <%= buyFor %>'s secret santa this year.
-</p>
-
-<p>
-  Thanks!
-</p>
-
-<p>
-  Santa
-</p>
+  <table cellpadding="0" cellspacing="0" border="0" id="backgroundTable">
+    <tr>
+      <td valign="top" align="left">
+        <table cellspacing="0" cellpadding="0" align="left" border="0" width="100%" style="background-color: #000000;" bgcolor="#000000">
+          <tr>
+            <td valign="top" align="center" width="100%">
+              <table cellspacing="0" cellpadding="0" align="center" border="0" width="800"  class="table__container">
+                <tr>
+                  <td valign="top" align="left" width="800" class="table__columns--one">
+                    <img src="http://memofromsanta.com/img/header-email.jpg" alt="Memo from Santa logo" style="display: block; outline: none; border: none;" class="image--full-width" />
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="left">
+        <table cellspacing="0" cellpadding="0" align="center" border="0" width="100%" style="background-color: #e9e9e8;" bgcolor="#e9e9e8" class="table__container--padded">
+          <tr>
+            <td valign="top" align="center" width="100%" class="table__columns--one">
+              <table cellspacing="0" cellpadding="0" align="center" border="0" width="800" class="table__container">
+                <tr>
+                  <td valign="top" align="left" width="109" class="small-screen--hidden">
+                    <img src="http://memofromsanta.com/img/letter-left-email.jpg" alt="" style="display: block; outline: none; border: none;" />
+                  </td>
+                  <td valign="top" align="left" width="582" bgcolor="#fdfdfd" style="background-color: #fdfdfd;">
+                    <table cellspacing="0" cellpadding="0" align="left" border="0" width="100%">
+                      <tr>
+                        <td valign="top" align="left" width="582" height="35">
+                          &nbsp;
+                        </td>
+                      </tr>
+                      <tr>
+                        <td valign="top" align="left" width="582" bgcolor="#fdfdfd" style="background-color: #fdfdfd; font-family: Tahoma, Verdana, Segoe, sans-serif; color: #333; font-size: 16px;">
+                          Dear <strong><%= from.name %></strong>,
+                          <br /><br /><br />
+                          I have lost my reindeer and will not be able to deliver presents this year. Will you please help me out?
+                          <br /><br /><br />
+                          My elves told me you will be going to a Christmas Party ('<%= event.title %>') on <%= event.date %>. Could you please buy a present for <%= to.name %>? The maximum amount of money to spend is € <%= event.cashAmount %>.
+                          <br /><br /><br />
+                          I will be very grateful if you could be <%= to.name %>'s secret santa this year.
+                          <br />
+                          <br />
+                          Thanks!
+                          <br /><br /><br />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td valign="top" align="left" width="582">
+                          <img src="http://memofromsanta.com/img/email-signature.png" alt="" style="display: block; outline: none; border: none;" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td valign="top" align="left" width="582" height="20">
+                          &nbsp;
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td valign="top" align="left" width="109" class="small-screen--hidden">
+                    <img src="http://memofromsanta.com/img/letter-right-email.jpg" alt="" style="display: block; outline: none; border: none;" />
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="left">
+        <table cellspacing="0" cellpadding="0" align="left" border="0" width="100%" style="background-color: #b72727;" bgcolor="#b72727" height="150">
+          <tr>
+            <td valign="middle" align="left" width="100%" height="150" >
+              <table cellspacing="0" cellpadding="0" align="center" border="0" width="800" class="table__container">
+                <tr>
+                  <td valign="top" align="center" width="800" style="color: #FFF; text-transform: uppercase; letter-spacing: 2px; font-family: Tahoma, Verdana, Segoe, sans-serif;" class="table__columns--one">
+                    <a href="http://memofromsanta.com" title="Memo from Santa" style="display: block; text-decoration: none; outline: none; border: none; color: #FFF; text-transform: uppercase; letter-spacing: 2px; font-family: Tahoma, Verdana, Segoe, sans-serif; font-weight: bold;">
+                      www.memofromsanta.com
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>

@@ -4,15 +4,15 @@
  */
 
  var express = require('express'),
- routes = require('./routes'),
- http = require('http'),
- path = require('path'),
- _ = require('underscore'),
- nodemailer = require('nodemailer'),
- emailTemplates = require('email-templates'),
- templatesDir = path.resolve(__dirname, '.', 'templates'),
- emailExistence = require('email-existence'),
- emails, secretSanta, app, ga;
+     routes = require('./routes'),
+     http = require('http'),
+     path = require('path'),
+     _ = require('underscore'),
+     nodemailer = require('nodemailer'),
+     emailTemplates = require('email-templates'),
+     templatesDir = path.resolve(__dirname, '.', 'templates'),
+     emailExistence = require('email-existence'),
+     emails, secretSanta, app, ga;
 
  app = express();
 
@@ -35,11 +35,6 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'app')));
-  app.set('mailOptions', {
-    host:  'localhost',
-    port:  '25',
-    from:  'santa@memofromsanta.com'
-  });
 });
 
 app.configure('development', function(){
@@ -75,8 +70,6 @@ secretSanta = function(data) {
   return matches;
 };
 
-
-
 app.post('/handleEmails', function(req, res) {
   var postData = req.body,
       mailData = {};
@@ -84,60 +77,54 @@ app.post('/handleEmails', function(req, res) {
   mailData.event = postData.event;
   mailData.matches = secretSanta(postData.people);
 
-  console.log(mailData);
-  res.json(mailData);
+  emailTemplates(templatesDir, function(err, template) {
+    if (err) {
+      console.log(err);
+    } else {
+      var transportBatch = nodemailer.createTransport("SMTP", {
+        service: 'Mailgun',
+        auth: {
+          user: process.env.MAILGUN_USER,
+          pass: process.env.MAILGUN_PASS
+        }
+      });
 
-  // emailTemplates(templatesDir, function(err, template) {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     var transport = nodemailer.createTransport("SMTP", {
-  //       service: 'Mailgun',
-  //       auth: {
-  //         user: process.env.MAILGUN_USER,
-  //         pass: process.env.MAILGUN_PASS
-  //       }
-  //     });
+      var Render = function(santaEvent, locals) {
+        this.locals = locals;
+        this.locals.event = santaEvent;
+        var _this = this;
+        this.send = function(err, html, text) {
+          if (err) {
+            console.log(err);
+          } else {
+            transportBatch.sendMail({
+              from: 'Santa Claus <santa@memofromsanta.com>',
+              to: _this.locals.from.email,
+              subject: 'Christmas Party: ' + _this.locals.event.title,
+              html: html,
+              generateTextFromHTML: true
+            }, function(err, responseStatus) {
+              if (err) {
+                console.log(err);
+              } else {
+                console.log(responseStatus.message);
+              }
+            });
+          }
+        };
+        this.batch = function(batch) {
+          batch(this.locals, templatesDir, this.send);
+        };
+      };
 
-  //     var locals = {
-  //       email: 'info@jorisooms.be',
-  //       name: 'Joris',
-  //       buyFor: 'seegje',
-  //       event: {
-  //         date: '25 dec 2013',
-  //         cash: '15 EUR',
-  //         name: 'Partijtje'
-  //       }
-  //     };
-
-  //     template('invitation', locals, function(err, html, text) {
-  //       if (err) {
-  //         console.log(err);
-  //       } else {
-  //         emailExistence.check(locals.email, function(err, res) {
-  //           if (err) {
-  //             console.log(err);
-  //           } else {
-  //             transport.sendMail({
-  //               from: 'Santa Claus <santa@memofromsanta.com>',
-  //               to: locals.email,
-  //               subject: 'Party: ' + locals.event.name,
-  //               html: html,
-  //               generateTextFromHTML: true,
-  //               text: text
-  //             }, function(err, responseStatus) {
-  //               if (err) {
-  //                 console.log(err);
-  //               } else {
-  //                 console.log(responseStatus.message);
-  //               }
-  //             });
-  //           }
-  //         });
-  //       }
-  //     });
-  //   }
-  // });
+      template('invitation', true, function(err, batch) {
+        for(var match in mailData.matches) {
+          var render = new Render(mailData.event, mailData.matches[match]);
+          render.batch(batch);
+        }
+      });
+    }
+  });
 });
 
 
