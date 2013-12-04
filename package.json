@@ -12,7 +12,8 @@
     "nodemailer": "~0.5.11",
     "newrelic": "~1.1.1",
     "node-mailer": "~0.1.1",
-    "email-templates": "~0.1.0"
+    "email-templates": "~0.1.0",
+    "email-existence": "~0.1.2"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

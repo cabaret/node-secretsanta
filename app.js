@@ -11,6 +11,7 @@
  nodemailer = require('nodemailer'),
  emailTemplates = require('email-templates'),
  templatesDir = path.resolve(__dirname, '.', 'templates'),
+ emailExistence = require('email-existence'),
  emails, secretSanta, app, ga;
 
  app = express();
@@ -112,18 +113,24 @@ app.post('/handleEmails', function(req, res) {
         if (err) {
           console.log(err);
         } else {
-          transport.sendMail({
-            from: 'Santa Claus <santa@memofromsanta.com>',
-            to: locals.email,
-            subject: 'Party: ' + locals.event.name,
-            html: html,
-            generateTextFromHTML: true,
-            text: text
-          }, function(err, responseStatus) {
+          emailExistence.check(locals.email, function(err, res) {
             if (err) {
               console.log(err);
             } else {
-              console.log(responseStatus.message);
+              transport.sendMail({
+                from: 'Santa Claus <santa@memofromsanta.com>',
+                to: locals.email,
+                subject: 'Party: ' + locals.event.name,
+                html: html,
+                generateTextFromHTML: true,
+                text: text
+              }, function(err, responseStatus) {
+                if (err) {
+                  console.log(err);
+                } else {
+                  console.log(responseStatus.message);
+                }
+              });
             }
           });
         }
