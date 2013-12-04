@@ -85,10 +85,11 @@
                           I have lost my reindeer and will not be able to deliver presents this year. Will you please help me out?
                           <br /><br /><br />
                           My elves told me you will be going to a Christmas Party ('<%= event.title %>') on <strong><%= event.date %></strong>. Could you please buy a present for <strong><%= to.name %></strong>? The maximum amount of money to spend is <strong>€ <%= event.cashAmount %></strong>.
-                          <br /><br /><br />
+                          <br /><br />
                           <%if(event.message) { %>
                             The party's organiser also left you a note: <em><%= event.message %></em>
                           <% } %>
+                          <br /><br />
                           I will be very grateful if you could be <strong><%= to.name %>'s</strong> secret santa this year.
                           <br />
                           <br />
