@@ -49,12 +49,12 @@ app.configure('development', function(){
 app.get('/', routes.index(app.get('env'), ga));
 
 secretSanta = function(data) {
-  var givers = data.people,
+  var givers = data,
   takers = _.clone(givers),
   matches = [],
   i;
 
-  for(i = 0; i < data.people.length; i++) {
+  for(i = 0; i < data.length; i++) {
     // can probably be done way better but hey, quick hack for now..
     var tmpGivers, tmpTakers, giver, taker;
     tmpGivers = _.clone(givers);
@@ -78,65 +78,66 @@ secretSanta = function(data) {
 
 
 app.post('/handleEmails', function(req, res) {
+  var postData = req.body,
+      mailData = {};
 
-  // console.log(templatesDir);
-  // var postData = req.body,
-  //     mailData = {};
-  // mailData.event = postData.event;
-  // // mailData.matches = secretSanta(postData);
-  // console.log(secretSanta(postData));
-  // res.json(secretSanta(postData));
-  emailTemplates(templatesDir, function(err, template) {
-    if (err) {
-      console.log(err);
-    } else {
-      var transport = nodemailer.createTransport("SMTP", {
-        service: 'Mailgun',
-        auth: {
-          user: process.env.MAILGUN_USER,
-          pass: process.env.MAILGUN_PASS
-        }
-      });
+  mailData.event = postData.event;
+  mailData.matches = secretSanta(postData.people);
 
-      var locals = {
-        email: 'compleregibberishemail@imadethisupmqskdfj.com',
-        name: 'Joris',
-        buyFor: 'Seeger',
-        event: {
-          date: '25 dec 2013',
-          cash: '15 EUR',
-          name: 'Partijtje'
-        }
-      };
+  console.log(mailData);
+  res.json(mailData);
 
-      template('invitation', locals, function(err, html, text) {
-        if (err) {
-          console.log(err);
-        } else {
-          emailExistence.check(locals.email, function(err, res) {
-            if (err) {
-              console.log(err);
-            } else {
-              transport.sendMail({
-                from: 'Santa Claus <santa@memofromsanta.com>',
-                to: locals.email,
-                subject: 'Party: ' + locals.event.name,
-                html: html,
-                generateTextFromHTML: true,
-                text: text
-              }, function(err, responseStatus) {
-                if (err) {
-                  console.log(err);
-                } else {
-                  console.log(responseStatus.message);
-                }
-              });
-            }
-          });
-        }
-      });
-    }
-  });
+  // emailTemplates(templatesDir, function(err, template) {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     var transport = nodemailer.createTransport("SMTP", {
+  //       service: 'Mailgun',
+  //       auth: {
+  //         user: process.env.MAILGUN_USER,
+  //         pass: process.env.MAILGUN_PASS
+  //       }
+  //     });
+
+  //     var locals = {
+  //       email: 'info@jorisooms.be',
+  //       name: 'Joris',
+  //       buyFor: 'seegje',
+  //       event: {
+  //         date: '25 dec 2013',
+  //         cash: '15 EUR',
+  //         name: 'Partijtje'
+  //       }
+  //     };
+
+  //     template('invitation', locals, function(err, html, text) {
+  //       if (err) {
+  //         console.log(err);
+  //       } else {
+  //         emailExistence.check(locals.email, function(err, res) {
+  //           if (err) {
+  //             console.log(err);
+  //           } else {
+  //             transport.sendMail({
+  //               from: 'Santa Claus <santa@memofromsanta.com>',
+  //               to: locals.email,
+  //               subject: 'Party: ' + locals.event.name,
+  //               html: html,
+  //               generateTextFromHTML: true,
+  //               text: text
+  //             }, function(err, responseStatus) {
+  //               if (err) {
+  //                 console.log(err);
+  //               } else {
+  //                 console.log(responseStatus.message);
+  //               }
+  //             });
+  //           }
+  //         });
+  //       }
+  //     });
+  //   }
+  // });
 });
 
 

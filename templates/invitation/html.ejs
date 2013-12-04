@@ -1,15 +1,24 @@
 <html>
 <head></head>
 <body>
-<h1>santa! :D</h1>
+<h1>Memo from Santa</h1>
 
-<ul>
-  <li><%= email %></li>
-  <li><%= name %></li>
-  <li><%= buyFor %></li>
-  <li><%= event.date %></li>
-  <li><%= event.name %></li>
-  <li><%= event.cash %></li>
-</ul>
+<p>Dear <strong><%= name %>,</p>
+<p>I have lost my reindeer and will not be able to deliver presents this year. Will you help me out?</p>
+<p>
+  My elves told me you will be going to a Christmas Party ('<%= event.name %>') on <%= event.date %>. Could you please buy a present for <%= buyFor %>? The maximum amount of money to spend is &euro; <%= event.cash %>.
+</p>
+
+<p>
+  I will be very grateful if you could be <%= buyFor %>'s secret santa this year.
+</p>
+
+<p>
+  Thanks!
+</p>
+
+<p>
+  Santa
+</p>
 </body>
 </html>
