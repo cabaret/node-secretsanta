@@ -63,13 +63,13 @@
     </tr>
     <tr>
       <td valign="top" align="left">
-        <table cellspacing="0" cellpadding="0" align="center" border="0" width="100%" style="background-color: #e9e9e8;" bgcolor="#e9e9e8" class="table__container--padded">
+        <table cellspacing="0" cellpadding="0" align="center" border="0" width="100%" style="background-color: #fdfdfd;" bgcolor="#fdfdfd" class="table__container--padded">
           <tr>
             <td valign="top" align="center" width="100%" class="table__columns--one">
               <table cellspacing="0" cellpadding="0" align="center" border="0" width="800" class="table__container">
                 <tr>
-                  <td valign="top" align="left" width="109" class="small-screen--hidden">
-                    <img src="http://memofromsanta.com/img/letter-left-email.jpg" alt="" style="display: block; outline: none; border: none;" />
+                  <td valign="top" align="left" width="109" class="small-screen--hidden"  bgcolor="#fdfdfd" style="background-color: #fdfdfd;">
+                    &nbsp;
                   </td>
                   <td valign="top" align="left" width="582" bgcolor="#fdfdfd" style="background-color: #fdfdfd;">
                     <table cellspacing="0" cellpadding="0" align="left" border="0" width="100%">
@@ -84,9 +84,9 @@
                           <br /><br /><br />
                           I have lost my reindeer and will not be able to deliver presents this year. Will you please help me out?
                           <br /><br /><br />
-                          My elves told me you will be going to a Christmas Party ('<%= event.title %>') on <%= event.date %>. Could you please buy a present for <%= to.name %>? The maximum amount of money to spend is € <%= event.cashAmount %>.
+                          My elves told me you will be going to a Christmas Party ('<%= event.title %>') on <strong><%= event.date %></strong>. Could you please buy a present for <strong><%= to.name %></strong>? The maximum amount of money to spend is <strong>€ <%= event.cashAmount %></strong>.
                           <br /><br /><br />
-                          I will be very grateful if you could be <%= to.name %>'s secret santa this year.
+                          I will be very grateful if you could be <strong><%= to.name %>'s</strong> secret santa this year.
                           <br />
                           <br />
                           Thanks!
@@ -96,6 +96,7 @@
                       <tr>
                         <td valign="top" align="left" width="582">
                           <img src="http://memofromsanta.com/img/email-signature.png" alt="" style="display: block; outline: none; border: none;" />
+                          <br />
                         </td>
                       </tr>
                       <tr>
@@ -105,8 +106,8 @@
                       </tr>
                     </table>
                   </td>
-                  <td valign="top" align="left" width="109" class="small-screen--hidden">
-                    <img src="http://memofromsanta.com/img/letter-right-email.jpg" alt="" style="display: block; outline: none; border: none;" />
+                  <td valign="top" align="left" width="109" class="small-screen--hidden"  bgcolor="#fdfdfd" style="background-color: #fdfdfd;">
+                    &nbsp;
                   </td>
                 </tr>
               </table>
