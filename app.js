@@ -72,9 +72,12 @@ secretSanta = function(data) {
 
 app.post('/handleEmails', function(req, res) {
   var postData = req.body,
-      mailData = {};
-
+      mailData = {},
+      d;
   mailData.event = postData.event;
+  d = new Date(postData.event.date);
+  mailData.event.date = d.toLocaleDateString('en-us', { month: 'long' });
+
   mailData.matches = secretSanta(postData.people);
 
   emailTemplates(templatesDir, function(err, template) {
@@ -88,7 +91,6 @@ app.post('/handleEmails', function(req, res) {
           pass: process.env.MAILGUN_PASS
         }
       });
-
       var Render = function(santaEvent, locals) {
         this.locals = locals;
         this.locals.event = santaEvent;
