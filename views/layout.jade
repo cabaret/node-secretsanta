@@ -110,4 +110,14 @@ html(class="no-js", lang="en", xmlns:og="http://opengraphprotocol.org/schema/", 
           }
         }
       script(src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-529dd1ce6158d340")
+      script.
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', #{ga.code}]);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 
+        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
