@@ -87,7 +87,8 @@
                           My elves told me you will be going to a Christmas party titled '<%= event.title %>' on <strong><%= event.date %></strong>. Could you please buy a present for <strong><%= to.name %></strong>? The maximum amount of money to spend is <strong>€ <%= event.cashAmount %></strong>.
                           <br /><br />
                           <%if(event.message) { %>
-                            The party's organiser also left you a note: <em><%= event.message %></em>
+                            The party's organiser also left you a note:
+                            <br /><em><%= event.message %></em>
 
                           <br /><br />
                           <% } %>
