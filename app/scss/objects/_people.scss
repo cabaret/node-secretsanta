@@ -118,12 +118,12 @@
     border: none;
     border-radius: 50%;
     position: relative;
-    top: -.35em;
+    top: -.3em;
     width: auto;
 
     .icon--remove {
       color: #b82929;
-      font-size: 1.3em;
+      font-size: 1.4em;
     }
   }
 }
@@ -135,6 +135,17 @@
 .added-person__button-wrap {
   @media (min-width: $screen-sm-min) {
     padding-left: .2em;
+  }
+}
+
+.added-person__icon {
+  // display: none;
+  &.icon--error {
+    color: #b72727;
+  }
+
+  &.icon--okay {
+    color: #75B727;
   }
 }
 

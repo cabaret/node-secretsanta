@@ -26,9 +26,6 @@
 .icon--instagram:before {
   content: "\e600";
 }
-.icon--dribbble:before {
-  content: "\e601";
-}
 .icon--linkedin:before {
   content: "\e602";
 }
@@ -44,6 +41,18 @@
 .icon--remove:before {
   content: "\e607";
 }
+.icon--dribbble:before {
+  content: "\e601";
+}
+.icon--error:before {
+  content: "\e608";
+}
+.icon--okay:before {
+  content: "\e609";
+}
 .icon--calendar:before {
   content: "\e605";
+}
+
+.icon--spinner {
 }
