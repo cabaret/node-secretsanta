@@ -41,51 +41,64 @@ html(class="no-js", lang="en", xmlns:og="http://opengraphprotocol.org/schema/", 
           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
   body(ng-app="SecretSantaApp", id="ng-app")
-    a#github(href="https://github.com/cabaret", title="Github", target="_blank")
-      img(style="position: absolute; top: 0; right: 0; border: 0;", src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png", alt="Fork me on GitHub")
-    header.header
-      img(src="/img/logo.svg", alt="Memo from Santa logo", width="208", height="243").logo__img
-      h1.logo__text Memo from Santa
+    div.app-container
+      a#github(href="https://github.com/cabaret", title="Github", target="_blank")
+        img(style="position: absolute; top: 0; right: 0; border: 0;", src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png", alt="Fork me on GitHub")
+      header.header
+        img(src="/img/logo.svg", alt="Memo from Santa logo", width="208", height="243").logo__img
+        h1.logo__text Memo from Santa
 
-    section.memo
-      div.container
-        p.col-xs-12.memo__letter
-          span.headline Help, Rudolph has gone missing!
-          | Santa Claus won't be able to deliver presents in time. Will you help him out?
-          | Fill in the names of you and your friends and the details of your Christmas party.
-          | We'll make sure everyone knows whom to buy a present for!
+      section.memo
+        div.container
+          p.col-xs-12.memo__letter
+            span.headline Help, Rudolph has gone missing!
+            | Santa Claus won't be able to deliver presents in time. Will you help him out?
+            | Fill in the names of you and your friends and the details of your Christmas party.
+            | We'll make sure everyone knows whom to buy a present for!
 
-    block content
+      block content
 
-    footer.footer.col-xs-12
-      div.col-xs-12.col-sm-6.col-md-3.col-md-push-3.credit.joris
-        p.credit__author Joris Ooms
-        p.credit__skill Development
-        ul.social
-          - var social = [{ 'name': 'github', 'url': 'https://github.com/cabaret' }, {'name': 'twitter', 'url': 'https://twitter.com/ontolecabaret' }, {'name': 'linkedin', 'url': 'http://www.linkedin.com/in/oomsjoris' }, { 'name': 'instagram', 'url': 'http://instagram.com/dinosaursinspace' }]
-          - for network in social
-              li.social__item
-                a(href="#{network.url}", title="#{network.name}", target="_blank", class="joris-#{network.name}")
-                  i(class="social__icon icon--#{network.name}")
-      div.col-xs-12.col-sm-6.col-md-3.col-md-push-3.credit.seeger
-        p.credit__author Seeger Mattijs
-        p.credit__skill Design
-        ul.social
-          - var social = [{ 'name': 'dribbble', 'url': 'http://dribbble.com/seegermattijs' }, { 'name': 'twitter', 'url': 'https://twitter.com/SeegerMattijs' }, { 'name': 'linkedin', 'url': 'http://be.linkedin.com/pub/seeger-mattijs/48/284/745' }, { 'name': 'instagram', 'url': 'http://instagram.com/seegermattijs' }]
-          - for network in social
-              li.social__item
-                a(href="#{network.url}", title="#{network.name}", target="_blank", class="seeger-#{network.name}")
-                  i(class="social__icon icon--#{network.name}")
+      footer.footer.col-xs-12
+        div.col-xs-12.col-sm-6.col-md-3.col-md-push-3.credit.joris
+          p.credit__author Joris Ooms
+          p.credit__skill Development
+          ul.social
+            - var social = [{ 'name': 'github', 'url': 'https://github.com/cabaret' }, {'name': 'twitter', 'url': 'https://twitter.com/ontolecabaret' }, {'name': 'linkedin', 'url': 'http://www.linkedin.com/in/oomsjoris' }, { 'name': 'instagram', 'url': 'http://instagram.com/dinosaursinspace' }]
+            - for network in social
+                li.social__item
+                  a(href="#{network.url}", title="#{network.name}", target="_blank", class="joris-#{network.name}")
+                    i(class="social__icon icon--#{network.name}")
+        div.col-xs-12.col-sm-6.col-md-3.col-md-push-3.credit.seeger
+          p.credit__author Seeger Mattijs
+          p.credit__skill Design
+          ul.social
+            - var social = [{ 'name': 'dribbble', 'url': 'http://dribbble.com/seegermattijs' }, { 'name': 'twitter', 'url': 'https://twitter.com/SeegerMattijs' }, { 'name': 'linkedin', 'url': 'http://be.linkedin.com/pub/seeger-mattijs/48/284/745' }, { 'name': 'instagram', 'url': 'http://instagram.com/seegermattijs' }]
+            - for network in social
+                li.social__item
+                  a(href="#{network.url}", title="#{network.name}", target="_blank", class="seeger-#{network.name}")
+                    i(class="social__icon icon--#{network.name}")
 
 
-      div.social-shares.col-xs-12
-        div.addthis_toolbox.addthis_default_style.social-shares__toolbox
-          a.addthis_button_preferred_1
-          a.addthis_button_preferred_2
-          a.addthis_button_preferred_3
-          a.addthis_button_preferred_4
-          a.addthis_button_compact
-          a.addthis_counter.addthis_bubble_style
+        div.social-shares.col-xs-12
+          div.addthis_toolbox.addthis_default_style.social-shares__toolbox
+            a.addthis_button_preferred_1
+            a.addthis_button_preferred_2
+            a.addthis_button_preferred_3
+            a.addthis_button_preferred_4
+            a.addthis_button_compact
+            a.addthis_counter.addthis_bubble_style
+
+    div.legacy
+       p
+        | <strong>Dear visitor,</strong> <br><br>
+
+        | The elves who developed this website did decide to not support older browsers.<br>
+        | To view this website, please upgrade your internet browser. <br><br>
+        | You can find more information about upgrading to a better and newer browser here:<br><br>
+        | <strong><a href="http://browsehappy.com/" title="Browse happy" target="_blank">Browse happy - Upgrade your browser today!</a></strong><br><br>
+        | Don't forget to visit us again afterwards!<br><br>
+        | With love,<br><br>
+        | Santa Claus
 
     if env === 'development'
       script(src='http://localhost:35729/livereload.js')

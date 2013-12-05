@@ -23,3 +23,17 @@ width: 100%;
 .disable-hover {
   pointer-events: none;
 }
+
+.legacy {
+  display: none;
+  padding: 3em;
+}
+
+.lt-ie9 {
+  .app-container {
+    display: none;
+  }
+  .legacy {
+    display: block;
+  }
+}
