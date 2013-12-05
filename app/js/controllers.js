@@ -136,7 +136,7 @@ angular.module('SecretSantaApp.controllers', [])
     window._gaq.push(['_trackEvent', 'link', 'github-fork']);
   });
 
-  $('a[class^="seeger-"], a[class^=joris-').on('click', function() {
+  $('a[class^="seeger-"], a[class^="joris-"]').on('click', function() {
     window._gaq.push(['_trackEvent', 'link', $(this).attr('class')]);
   });
 
