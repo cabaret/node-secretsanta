@@ -92,7 +92,7 @@ app.post('/checkEmail', function(req, res) {
     .then(
       function(err, res) {
         console.log(err, res);
-        if(res == false) {
+        if(err) {
           _err.success = false;
           _err.errors.push({
             error: err,
