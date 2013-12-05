@@ -21,11 +21,6 @@
   require('newrelic');
 }
 
-process.on('uncaughtException', function (err) {
-  console.error(err.stack);
-  console.log("Node NOT Exiting...");
-});
-
 ga = {
   code: process.env.GA_CODE,
   url: process.env.GA_URL
@@ -95,8 +90,7 @@ app.post('/checkEmail', function(req, res) {
 
   checkEmail(data.email)
     .then(
-      function(err, status) {
-        console.log(err, status);
+      function(err, res) {
         if(err) {
           _err.success = false;
           _err.errors.push({

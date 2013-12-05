@@ -13,8 +13,8 @@
     "newrelic": "~1.1.1",
     "node-mailer": "~0.1.1",
     "email-templates": "~0.1.0",
-    "email-existence": "latest",
-    "q": "~0.9.7"
+    "q": "~0.9.7",
+    "email-existence": "~0.1.2"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

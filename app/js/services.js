@@ -8,6 +8,7 @@ angular.module('SecretSantaApp.services', [])
       var email = { "email": data };
       $http.post('/checkEmail', email)
         .success(function(res) {
+          console.log(res);
           callback(res);
         });
     }

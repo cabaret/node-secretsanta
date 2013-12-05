@@ -58,15 +58,19 @@ angular.module('SecretSantaApp.controllers', [])
         $scope.newPerson.valid = true;
         $scope.people.push(person);
         $scope.checkErrors();
-        $scope.newPerson = {};
       }
       emailAPIService.checkEmail($scope.newPerson.email, function(data) {
         console.log(data.success);
         if(data.success != true) {
           $scope.newPerson.valid = false;
+          // $scope.newPerson = {};
         } else {
+          console.log('vlid');
           $scope.newPerson.valid = true;
+          // $scope.newPerson = {};
         }
+        console.log('here');
+        $scope.newPerson = {};
       });
     };
 
