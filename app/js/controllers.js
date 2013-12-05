@@ -26,6 +26,7 @@ angular.module('SecretSantaApp.controllers', [])
       'title': 'Please provide an event title.',
       'people': 'Please add at least 3 people',
       'exists': 'Already on the list',
+      'noexist': 'E-mail address does not exist',
       'ok': 'Send to santa!'
     }
 
@@ -42,33 +43,31 @@ angular.module('SecretSantaApp.controllers', [])
     };
 
     $scope.addPerson = function(person) {
-      var testAdded = false, emailExists = false;
+      var alreadyAdded = false, emailExists = false;
       if($scope.people.length >= 1) {
         for(var idx in $scope.people) {
           if(_.contains($scope.people[idx], person.email)) {
-            testAdded = true;
+            alreadyAdded = true;
           }
         }
       }
-
+      if(alreadyAdded) {
+        $scope.currentError = $scope.errors.exists;
+        $scope.newPerson = {};
+      } else {
+        $scope.newPerson.valid = true;
+        $scope.people.push(person);
+        $scope.checkErrors();
+        $scope.newPerson = {};
+      }
       emailAPIService.checkEmail($scope.newPerson.email, function(data) {
-        console.log(data);
+        console.log(data.success);
         if(data.success != true) {
-
+          $scope.newPerson.valid = false;
         } else {
-          $scope.people.push(person);
-          $scope.checkErrors();
-          $scope.newPerson = {};
+          $scope.newPerson.valid = true;
         }
       });
-
-      // if(testAdded && emailExists) {
-      //   // handle both errors
-      //   $scope.currentError = $scope.errors.exists;
-      //   $scope.newPerson = {};
-      // } else {
-
-      // }
     };
 
     $scope.removePerson = function(index) {
@@ -77,7 +76,13 @@ angular.module('SecretSantaApp.controllers', [])
 
     $scope.validateEvent = function(detailsForm, people) {
       if(detailsForm.$valid && people.length >= 3) {
-        return true;
+        var res = true;
+        for(var person in people) {
+          if( ! person.valid) {
+            res = false
+          }
+        }
+        return res;
       } else {
         return false;
       }

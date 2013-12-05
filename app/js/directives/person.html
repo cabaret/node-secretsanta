@@ -2,6 +2,7 @@
   <span class="added-person__name">{{ person.name }}</span>
   <span class="added-person__email">{{ person.email }}</span>
 </p>
+{{ person.valid }}
 <div class="col-xs-12 col-sm-1 col-sm-pull-11 added-person__button-wrap">
   <button ng-click="removePerson($index)" class="form-control people__button--remove">
     <i class="icon icon--remove"></i>
