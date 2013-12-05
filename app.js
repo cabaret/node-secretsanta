@@ -17,9 +17,6 @@
 
  app = express();
 
- if(app.get('env') == 'production') {
-  require('newrelic');
-}
 
 ga = {
   code: process.env.GA_CODE,
