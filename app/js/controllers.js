@@ -43,7 +43,8 @@ angular.module('SecretSantaApp.controllers', [])
     };
 
     $scope.addPerson = function(person) {
-      var alreadyAdded = false, emailExists = false;
+      var alreadyAdded = false, emailExists = null,
+          person = $scope.newPerson;
       if($scope.people.length >= 1) {
         for(var idx in $scope.people) {
           if(_.contains($scope.people[idx], person.email)) {
@@ -55,23 +56,18 @@ angular.module('SecretSantaApp.controllers', [])
         $scope.currentError = $scope.errors.exists;
         $scope.newPerson = {};
       } else {
-        $scope.newPerson.valid = true;
         $scope.people.push(person);
-        $scope.checkErrors();
-      }
-      emailAPIService.checkEmail($scope.newPerson.email, function(data) {
-        console.log(data.success);
-        if(data.success != true) {
-          $scope.newPerson.valid = false;
-          // $scope.newPerson = {};
-        } else {
-          console.log('vlid');
-          $scope.newPerson.valid = true;
-          // $scope.newPerson = {};
-        }
-        console.log('here');
         $scope.newPerson = {};
-      });
+        $scope.checkErrors();
+        var idx = $scope.people.indexOf(person);
+        emailAPIService.checkEmail(person.email, function(data) {
+          if(data.success != true) {
+            $scope.people[idx].valid = false;
+          } else {
+            $scope.people[idx].valid = true;
+          }
+        });
+      }
     };
 
     $scope.removePerson = function(index) {
