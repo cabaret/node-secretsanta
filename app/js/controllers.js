@@ -28,6 +28,7 @@ angular.module('SecretSantaApp.controllers', [])
     'people': 'Please add at least 3 people',
     'exists': 'Already on the list',
     'noexist': 'One of the addresses does not exist',
+    'checking': 'The elves are verifying the addresses',
     'ok': 'Send to santa!'
   }
 
@@ -46,15 +47,14 @@ angular.module('SecretSantaApp.controllers', [])
         if(people[i].valid == false) {
           valid = false;
         } else if(people[i].valid == null) {
+          $scope.currentError = $scope.errors.checking;
           valid = false;
         } else {
           valid = true;
         }
       }
       $scope.valid = valid;
-      if( ! $scope.valid) {
-        $scope.currentError = $scope.errors.noexist;
-      } else {
+      if($scope.valid) {
         $scope.currentError = $scope.errors.ok;
       }
     }
