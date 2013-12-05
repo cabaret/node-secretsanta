@@ -67,6 +67,8 @@ block content
           div.added-people
             person.col-xs-12(ng-repeat="person in people", ng-animate="{enter: 'animate-enter'}")
 
+    {{ !event.valid }}
+    {{ !validateEvent(detailsForm, people) }}
     section.submit
       div.container
         button.submit__btn-submit(ng-click="submitEvent()",
