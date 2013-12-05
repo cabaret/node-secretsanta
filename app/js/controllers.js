@@ -127,6 +127,12 @@ angular.module('SecretSantaApp.controllers', [])
           date: new Date("2013-12-25T00:00:00.000Z"),
           message: ''
         };
+        $('.submit__btn-submit').hide();
+        $('.people').slideUp(function() {
+          $('.details').slideUp(function() {
+            console.log('hehe');
+          }, 750);
+        }, 750);
       }
     });
   };

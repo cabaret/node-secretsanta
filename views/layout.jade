@@ -24,6 +24,7 @@ html(class="no-js", lang="en", xmlns:og="http://opengraphprotocol.org/schema/", 
     link(rel="icon", href="img/favicon.ico", type="image/x-icon")
 
     title=title
+
     if env === 'development'
       //- build:css app/css/santa.min.css
       link(rel="stylesheet", href="/css/jquery-ui.min.css")
@@ -31,15 +32,17 @@ html(class="no-js", lang="en", xmlns:og="http://opengraphprotocol.org/schema/", 
       //- endbuild
     else
       link(rel="stylesheet", href="/css/santa.min.css")
-      script.
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', '#{ga.code}']);
-        _gaq.push(['_trackPageview']);
-        (function() {
-          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-          ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
+
+    script.
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '#{ga.code}']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
   body(ng-app="SecretSantaApp", id="ng-app")
     div.app-container
       a#github(href="https://github.com/cabaret", title="Github", target="_blank")

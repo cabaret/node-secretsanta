@@ -76,7 +76,7 @@ secretSanta = function(data) {
   return matches;
 };
 
-app.post('/checkEmail', function(req, res) {
+app.post('/email', function(req, res) {
   var data = req.body,
       _err = {
         errors: [],
@@ -111,7 +111,65 @@ app.post('/checkEmail', function(req, res) {
     );
 });
 
+app.post('/emails', function(req, res) {
+  var postData = req.body,
+      mailData = {},
+      errors, date, i;
 
+  mailData.event = postData.event;
+  date = new Date(postData.event.date);
+  mailData.event.date = date.toLocaleDateString('en-us', { month: 'long' });
+
+  mailData.matches = secretSanta(postData.people);
+  emailTemplates(templatesDir, function(err, template) {
+    if(err) {
+      console.log(err);
+    } else {
+      var transportBatch = nodemailer.createTransport('SMTP', {
+        service: 'Mailgun',
+        auth: {
+          user: process.env.MAILGUN_USER,
+          pass: process.env.MAILGUN_PASS
+        }
+      });
+
+      var Render = function(santaEvent, locals) {
+        this.locals = locals;
+        this.locals.event = santaEvent;
+        var _this = this;
+        this.send = function(err, html, text) {
+          if (err) {
+            console.log(err);
+            } else {
+              transportBatch.sendMail({
+                from: 'Santa Claus <santa@memofromsanta.com>',
+                to: _this.locals.from.email,
+                subject: 'Christmas Party: ' + _this.locals.event.title,
+                html: html,
+                generateTextFromHTML: true
+              }, function(err, responseStatus) {
+                if (err) {
+                  console.log(err);
+                } else {
+                  console.log(responseStatus.message);
+                }
+              });
+            }
+          };
+          this.batch = function(batch) {
+            batch(this.locals, templatesDir, this.send);
+          };
+        };
+        template('invitation', true, function(err, batch) {
+          for(var match in mailData.matches) {
+            var render = new Render(mailData.event, mailData.matches[match]);
+            render.batch(batch);
+          }
+        });
+      }
+  });
+  res.json({ success: true });
+});
 
 
 http.createServer(app).listen(app.get('port'), function(){
