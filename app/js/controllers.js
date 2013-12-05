@@ -128,11 +128,20 @@ angular.module('SecretSantaApp.controllers', [])
           message: ''
         };
         $('.submit__btn-submit').hide();
-        $('.people').slideUp(function() {
-          $('.details').slideUp(function() {
-            console.log('hehe');
-          }, 750);
-        }, 750);
+        $('.people').slideUp(1000, function() {
+          $('.details').slideUp(1000, function() {
+            $('.memo').outerHeight($('.memo').outerHeight());
+            $('.memo .container').fadeOut(function() {
+              var html  = "<p class='col-xs-12 memo__letter'>";
+                html += "<span class='headline'>Thanks for helping Santa out!</span>"
+                html += "We hope you will have an amazing party! <br>Merry Christmas!<br><br>"
+                html += "Santa's little helpers"
+                html += "</p>";
+              $('.memo .container').html(html).fadeIn();;
+            })
+
+          });
+        });
       }
     });
   };
