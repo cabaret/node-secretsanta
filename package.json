@@ -13,7 +13,7 @@
     "newrelic": "~1.1.1",
     "node-mailer": "~0.1.1",
     "email-templates": "~0.1.0",
-    "email-existence": "git://github.com/nmanousos/email-existence.git",
+    "email-existence": "git://github.com/cabaret/email-existence.git",
     "q": "~0.9.7"
   },
   "devDependencies": {
