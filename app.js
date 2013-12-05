@@ -91,6 +91,7 @@ app.post('/checkEmail', function(req, res) {
   checkEmail(data.email)
     .then(
       function(err, res) {
+        console.log(err, res);
         if( ! res) {
           _err.success = false;
           _err.errors.push({
