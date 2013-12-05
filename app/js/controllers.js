@@ -120,6 +120,10 @@ angular.module('SecretSantaApp.controllers', [])
 
 
     /* TODO: figure out where to put this */
+    $('#github').on('click', function() {
+      window._gaq.push(['_trackEvent', 'link', 'github']);
+    });
+
     var body = document.body,
     timer;
 

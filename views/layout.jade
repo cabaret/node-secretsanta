@@ -31,9 +31,17 @@ html(class="no-js", lang="en", xmlns:og="http://opengraphprotocol.org/schema/", 
       //- endbuild
     else
       link(rel="stylesheet", href="/css/santa.min.css")
-
+      script.
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-XXXXX-X']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
   body(ng-app="SecretSantaApp")
-    a(href="https://github.com/cabaret", title="Github", target="_blank")
+    a#github(href="https://github.com/cabaret", title="Github", target="_blank")
       img(style="position: absolute; top: 0; right: 0; border: 0;", src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png", alt="Fork me on GitHub")
     header.header
       img(src="/img/logo.svg", alt="Memo from Santa logo", width="208", height="243").logo__img
@@ -112,12 +120,3 @@ html(class="no-js", lang="en", xmlns:og="http://opengraphprotocol.org/schema/", 
           }
         }
       script(src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-529dd1ce6158d340")
-      script.
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', '#{ga.code}']);
-        _gaq.push(['_trackPageview']);
-        (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
