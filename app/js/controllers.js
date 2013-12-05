@@ -121,8 +121,14 @@ angular.module('SecretSantaApp.controllers', [])
 
     /* TODO: figure out where to put this */
     $('#github').on('click', function() {
-      window._gaq.push(['_trackEvent', 'link', 'github']);
+      window._gaq.push(['_trackEvent', 'link', 'github-fork']);
     });
+
+    $('a[class^="seeger-"], a[class^=joris-').on('click', function() {
+      window._gaq.push(['_trackEvent', 'link', $(this).attr('class')]);
+    });
+
+
 
     var body = document.body,
     timer;

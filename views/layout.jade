@@ -65,7 +65,7 @@ html(class="no-js", lang="en", xmlns:og="http://opengraphprotocol.org/schema/", 
           - var social = [{ 'name': 'github', 'url': 'https://github.com/cabaret' }, {'name': 'twitter', 'url': 'https://twitter.com/ontolecabaret' }, {'name': 'linkedin', 'url': 'http://www.linkedin.com/in/oomsjoris' }, { 'name': 'instagram', 'url': 'http://instagram.com/dinosaursinspace' }]
           - for network in social
               li.social__item
-                a(href="#{network.url}", title="#{network.name}", target="_blank")
+                a(href="#{network.url}", title="#{network.name}", target="_blank" class="joris-#{network.name}")
                   i(class="social__icon icon--#{network.name}")
       div.col-xs-12.col-sm-6.col-md-3.col-md-push-3.credit.seeger
         p.credit__author Seeger Mattijs
@@ -74,7 +74,7 @@ html(class="no-js", lang="en", xmlns:og="http://opengraphprotocol.org/schema/", 
           - var social = [{ 'name': 'dribbble', 'url': 'http://dribbble.com/seegermattijs' }, { 'name': 'twitter', 'url': 'https://twitter.com/SeegerMattijs' }, { 'name': 'linkedin', 'url': 'http://be.linkedin.com/pub/seeger-mattijs/48/284/745' }, { 'name': 'instagram', 'url': 'http://instagram.com/seegermattijs' }]
           - for network in social
               li.social__item
-                a(href="#{network.url}", title="#{network.name}", target="_blank")
+                a(href="#{network.url}", title="#{network.name}", target="_blank" class="seeger-#{network.name}")
                   i(class="social__icon icon--#{network.name}")
 
 
