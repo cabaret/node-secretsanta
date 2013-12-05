@@ -25,6 +25,7 @@ angular.module('SecretSantaApp.controllers', [])
     $scope.errors = {
       'title': 'Please provide an event title.',
       'people': 'Please add at least 3 people',
+      'exists': 'Already on the list',
       'ok': 'Send to santa!'
     }
 
@@ -41,9 +42,33 @@ angular.module('SecretSantaApp.controllers', [])
     };
 
     $scope.addPerson = function(person) {
-      $scope.people.push(person);
-      $scope.checkErrors();
-      $scope.newPerson = {};
+      var testAdded = false, emailExists = false;
+      if($scope.people.length >= 1) {
+        for(var idx in $scope.people) {
+          if(_.contains($scope.people[idx], person.email)) {
+            testAdded = true;
+          }
+        }
+      }
+
+      emailAPIService.checkEmail($scope.newPerson.email, function(data) {
+        console.log(data);
+        if(data.success != true) {
+
+        } else {
+          $scope.people.push(person);
+          $scope.checkErrors();
+          $scope.newPerson = {};
+        }
+      });
+
+      // if(testAdded && emailExists) {
+      //   // handle both errors
+      //   $scope.currentError = $scope.errors.exists;
+      //   $scope.newPerson = {};
+      // } else {
+
+      // }
     };
 
     $scope.removePerson = function(index) {
@@ -64,7 +89,28 @@ angular.module('SecretSantaApp.controllers', [])
       // window._gaq.push(['_trackEvent', 'sendNames', 'clickSubmit']);
 
       _.extend(postData, { event: $scope.event }, { people: $scope.people });
-      emailAPIService.postEmails(postData);
+      // emailAPIService.postEmails(postData, function(data) {
+      //   console.log(data.success);
+      //   if(data.success) {
+      //     $scope.people = [];
+      //     $scope.newPerson = {};
+      //     $scope.event = {
+      //       title: null,
+      //       cashAmount: 15,
+      //       cashCurrency: 'eur',
+      //       date: new Date("2013-12-25T00:00:00.000Z"),
+      //       message: ''
+      //     };
+      //     (function() {
+      //       $('.submit').hide(function() {
+      //         $('.people').slideUp(function() {
+      //           $('.details').slideUp();
+      //         });
+      //       });
+      //     })();
+      //   }
+
+      // });
     };
 
 

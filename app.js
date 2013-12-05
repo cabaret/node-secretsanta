@@ -12,7 +12,8 @@
      emailTemplates = require('email-templates'),
      templatesDir = path.resolve(__dirname, '.', 'templates'),
      emailExistence = require('email-existence'),
-     emails, secretSanta, app, ga;
+     q = require('q'),
+     app, ga;
 
  app = express();
 
@@ -70,64 +71,41 @@ secretSanta = function(data) {
   return matches;
 };
 
-app.post('/handleEmails', function(req, res) {
-  var postData = req.body,
-      mailData = {},
-      d;
-  mailData.event = postData.event;
-  d = new Date(postData.event.date);
-  mailData.event.date = d.toLocaleDateString('en-us', { month: 'long' });
+app.post('/checkEmail', function(req, res) {
+  var data = req.body,
+      _err = {
+        errors: [],
+        success: false
+      },
+      _res = res,
+      checkEmail;
 
-  mailData.matches = secretSanta(postData.people);
+  checkEmail = function(email) {
+    var deferred = q.defer();
+    emailExistence.check(email, function(err, res) {
+        deferred.resolve(err, res);
+    }, 1000);
+    return deferred.promise;
+  }
 
-  emailTemplates(templatesDir, function(err, template) {
-    if (err) {
-      console.log(err);
-    } else {
-      var transportBatch = nodemailer.createTransport("SMTP", {
-        service: 'Mailgun',
-        auth: {
-          user: process.env.MAILGUN_USER,
-          pass: process.env.MAILGUN_PASS
+  checkEmail(data.email)
+    .then(
+      function(err, res) {
+        if( ! res) {
+          _err.success = false;
+          _err.errors.push({
+            error: err,
+            message: 'E-mail address does not exist: ' + data.email
+          });
+        } else {
+          _err.success = true;
+          _res.json(_err);
         }
-      });
-      var Render = function(santaEvent, locals) {
-        this.locals = locals;
-        this.locals.event = santaEvent;
-        var _this = this;
-        this.send = function(err, html, text) {
-          if (err) {
-            console.log(err);
-          } else {
-            transportBatch.sendMail({
-              from: 'Santa Claus <santa@memofromsanta.com>',
-              to: _this.locals.from.email,
-              subject: 'Christmas Party: ' + _this.locals.event.title,
-              html: html,
-              generateTextFromHTML: true
-            }, function(err, responseStatus) {
-              if (err) {
-                console.log(err);
-              } else {
-                console.log(responseStatus.message);
-              }
-            });
-          }
-        };
-        this.batch = function(batch) {
-          batch(this.locals, templatesDir, this.send);
-        };
-      };
-
-      template('invitation', true, function(err, batch) {
-        for(var match in mailData.matches) {
-          var render = new Render(mailData.event, mailData.matches[match]);
-          render.batch(batch);
-        }
-      });
-    }
-  });
+        _res.json(_err);
+      }
+    );
 });
+
 
 
 
