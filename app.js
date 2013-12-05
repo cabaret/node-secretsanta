@@ -84,7 +84,7 @@ app.post('/checkEmail', function(req, res) {
     var deferred = q.defer();
     emailExistence.check(email, function(err, res) {
         deferred.resolve(err, res);
-    }, 1000);
+    });
     return deferred.promise;
   }
 
