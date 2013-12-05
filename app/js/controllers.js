@@ -138,8 +138,7 @@ angular.module('SecretSantaApp.controllers', [])
                 html += "Santa's little helpers"
                 html += "</p>";
               $('.memo .container').html(html).fadeIn();;
-            })
-
+            });
           });
         });
       }
