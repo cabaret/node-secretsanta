@@ -17,6 +17,10 @@
 
  app = express();
 
+process.on('uncaughtException', function (err) {
+  console.error(err.stack);
+  console.log("Node NOT Exiting...");
+});
 
 ga = {
   code: process.env.GA_CODE,
