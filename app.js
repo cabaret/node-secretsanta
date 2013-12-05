@@ -17,6 +17,11 @@
 
  app = express();
 
+ process.on('uncaughtException', function (err) {
+  console.error(err.stack);
+  console.log("Node NOT Exiting...");
+});
+
  if(app.get('env') == 'production') {
   require('newrelic');
 }
