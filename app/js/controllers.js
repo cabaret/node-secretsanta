@@ -41,13 +41,14 @@ angular.module('SecretSantaApp.controllers', [])
     } else if($scope.people.length < 3) {
       $scope.currentError = $scope.errors.people;
       $scope.valid = false;
-    } else if(detailsForm.$valid && people.length >= 3) {
+    } else if(($scope.detailsForm && $scope.detailsForm.$valid) && $scope.people.length >= 3) {
       var valid = true;
-      for(var i = 0; i < people.length; i++) {
-        if(people[i].valid == false) {
-          valid = false;
-        } else if(people[i].valid == null) {
+      for(var i = 0; i < $scope.people.length; i++) {
+        if($scope.people[i].valid == null) {
           $scope.currentError = $scope.errors.checking;
+          valid = false;
+        } else if($scope.people[i].valid == false) {
+          $scope.currentError = $scope.errors.noexist;
           valid = false;
         } else {
           valid = true;
@@ -105,30 +106,30 @@ angular.module('SecretSantaApp.controllers', [])
   };
 
   $scope.validateEvent = function(detailsForm, people) {
-    return $scope.checkErrors(detailsForm, people);
+    $scope.detailsForm = detailsForm;
+    return $scope.checkErrors($scope.detailsForm, people);
   };
 
-  // $scope.submitEvent = function() {
-  //   var postData = {};
+  $scope.submitEvent = function() {
+    var postData = {};
 
-  //   window._gaq.push(['_trackEvent', 'sendNames', 'clickSubmit']);
+    window._gaq.push(['_trackEvent', 'sendNames', 'clickSubmit']);
 
-  //   _.extend(postData, { event: $scope.event }, { people: $scope.people });
-  //   emailAPIService.postEmails(postData, function(data) {
-  //     console.log(data.success);
-  //     if(data.success) {
-  //       $scope.people = [];
-  //       $scope.newPerson = {};
-  //       $scope.event = {
-  //         title: null,
-  //         cashAmount: 15,
-  //         cashCurrency: 'eur',
-  //         date: new Date("2013-12-25T00:00:00.000Z"),
-  //         message: ''
-  //       };
-  //     }
-  //   });
-  // };
+    _.extend(postData, { event: $scope.event }, { people: $scope.people });
+    emailAPIService.postEmails(postData, function(data) {
+      if(data.success) {
+        $scope.people = [];
+        $scope.newPerson = {};
+        $scope.event = {
+          title: null,
+          cashAmount: 15,
+          cashCurrency: 'eur',
+          date: new Date("2013-12-25T00:00:00.000Z"),
+          message: ''
+        };
+      }
+    });
+  };
 
 
   /* TODO: figure out where to put this */
