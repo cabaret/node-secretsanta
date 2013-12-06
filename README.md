@@ -16,4 +16,5 @@ This has been a great way to learn the basics of AngularJS and build an applicat
 ## Contributing
 
 Suggestions and pull requests are always welcome.
+
 Changes and new features will be included for the 2014 edition.
