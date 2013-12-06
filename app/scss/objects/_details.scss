@@ -56,7 +56,7 @@
   color: #fafeff;
   font-family: $tahoma;
   font-weight: bold;
-  font-size: 1.8em;
+  font-size: 1.2em;
   height: 1.8em;
   margin: 0 auto .5em auto;
   outline: none;
@@ -71,6 +71,10 @@
     border-bottom: 3px solid #671717;
     box-shadow: none;
     outline: none;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    font-size: 1.8em;
   }
 }
 
