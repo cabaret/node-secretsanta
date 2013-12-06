@@ -12,7 +12,7 @@ This has been a great way to learn the basics of AngularJS and build an applicat
 
 [www.memofromsanta.com](http://www.memofromsanta.com/ "http://www.memofromsanta.com")
 
-## To do / To learn
+## To do / to learn
 - Clean up
 - Learn to write tests properly and adopt a test-driven workflow. Too much time has been wasted on testing various parts of the application manually.
 - Learn to structure server-side code properly and adopt an async mindset.
