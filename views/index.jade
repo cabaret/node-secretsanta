@@ -5,17 +5,28 @@ block content
     section.details
       div.container
         form(role="form", name="detailsForm", id="detailsForm", novalidate).details__form
-          div.form-group.col-xs-12.event__name
-            label(for="eventTitle").col-xs-12.col-sm-6.event__label.event__label--name Event name:
-            div.col-xs-12.col-sm-8.col-sm-push-2
-              input(type="text",
-                    ng-model="event.title",
-                    id="eventTitle",
-                    name="eventTitle",
-                    placeholder="Your party title",
-                    required
-                      ng-change="checkErrors()"
-              ).form-control.event__input.event__input--name
+          h2.details__title Party details
+          div.form-group.col-xs-12.col-sm-5.col-md-6
+            label.event__label.col-xs-12 Party organiser name
+            div.control-group.input-append.col-xs-12
+              input(type='text', ng-model="event.organiser.name"
+                    required, name="organiserName",
+                    ng-change="checkOrganiser(detailsForm)"
+                    )#organiserName.col-xs-12.form-control
+
+          div.form-group.col-xs-12.col-sm-7.col-md-6
+            label.event__label.col-xs-12 Party organiser email
+            div.control-group.col-xs-12
+              input(type='email', ng-model="event.organiser.email",
+                    required, name="organiserEmail",
+                    ng-change="checkOrganiser(detailsForm)"
+                    )#organiserEmail.col-xs-12.form-control
+
+          div.form-group.col-xs-12
+            label.event__label.col-xs-12 Party title
+            div.control-group.col-xs-12
+              input(type='text', ng-model="event.title").col-xs-12.form-control
+
 
           div.form-group.col-xs-12.col-sm-5.col-md-6
             label.event__label.col-xs-12 Pick your date
@@ -38,7 +49,7 @@ block content
     section.people
       div.container
         form(role="form", id="personForm", name="personForm", ng-submit="addPerson(newPerson)", novalidate).person__form.clearfix
-          h2.people__title Add people
+          h2.people__title Add Secret Santas
           div.form-group.col-xs-12.col-sm-5.col-md-6
             label(for="name").col-xs-12.col-sm-1.people__label Name:
             div.col-xs-12

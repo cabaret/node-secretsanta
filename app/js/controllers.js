@@ -9,7 +9,11 @@ angular.module('SecretSantaApp.controllers', [])
     cashCurrency: 'eur',
     date: new Date("2013-12-25T00:00:00.000Z"),
     message: '',
-    valid: false
+    valid: false,
+    organiser: {
+      name: null,
+      email: null
+    }
   }
   $scope.people = [];
   $scope.newPerson = {};
@@ -24,6 +28,8 @@ angular.module('SecretSantaApp.controllers', [])
   }
 
   $scope.errors = {
+    'organiserName': 'Please provide an organiser name',
+    'organiserEmail': 'Please provide an organiser email',
     'title': 'Please provide an event title.',
     'people': 'Please add at least 3 people',
     'exists': 'Already on the list',
@@ -35,7 +41,13 @@ angular.module('SecretSantaApp.controllers', [])
   $scope.currentError = $scope.errors.title;
 
   $scope.checkErrors = function(detailsForm, people) {
-    if(! $scope.event.title) {
+    if(! $scope.event.organiser.name) {
+      $scope.currentError = $scope.errors.organiserName;
+      $scope.valid = false;
+    } else if( ! $scope.event.organiser.email) {
+      $scope.currentError = $scope.errors.organiserEmail;
+      $scope.valid = false;
+    } else if(! $scope.event.title) {
       $scope.currentError = $scope.errors.title;
       $scope.valid = false;
     } else if($scope.people.length < 3) {
@@ -83,11 +95,36 @@ angular.module('SecretSantaApp.controllers', [])
         $scope.people[idx].valid = true;
       }
     });
+
+  };
+
+  $scope.checkOrganiser = function(detailsForm) {
+    if($scope.event.organiser.name && $scope.event.organiser && detailsForm.organiserEmail.$valid && detailsForm.organiserName.$valid) {
+      var person = {
+        name: $scope.event.organiser.name,
+        email: $scope.event.organiser.email,
+        organiser: true
+      };
+
+      var hasOrganiser = false, idx;
+      for(var i = 0; i < $scope.people.length; i++) {
+        if(_.has($scope.people[i], 'organiser')) {
+          hasOrganiser = true;
+          idx = i;
+        }
+      }
+
+      if( ! _.contains($scope.people, person) && ! hasOrganiser) {
+        $scope.addPerson(person);
+      } else {
+        $scope.people.splice(idx, 1);
+        $scope.addPerson(person);
+      }
+    };
   };
 
   $scope.addPerson = function(person) {
-    var emailExists = null,
-        person = $scope.newPerson;
+    var person = person || $scope.newPerson
 
     if($scope.alreadyAdded(person.email)) {
       $scope.currentError = $scope.errors.exists;
@@ -125,8 +162,12 @@ angular.module('SecretSantaApp.controllers', [])
           cashAmount: 15,
           cashCurrency: 'eur',
           date: new Date("2013-12-25T00:00:00.000Z"),
-          message: ''
-        };
+          message: '',
+          organiser: {
+            name: null,
+            email: null
+          }
+        }
         $('.submit__btn-submit').hide();
         $('.people').slideUp(1000, function() {
           $('.details').slideUp(1000, function() {

@@ -37,3 +37,21 @@ width: 100%;
     display: block;
   }
 }
+
+.ie9, .lt-ie9 {
+  .people label {
+    display: block;
+  }
+}
+
+.form-control {
+  border: none;
+  outline: none;
+  box-shadow: none;
+
+  &:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+}
