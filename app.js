@@ -1,4 +1,5 @@
 
+
 /**
  * Module dependencies.
  */
@@ -164,7 +165,8 @@ app.post('/emails', function(req, res) {
                 from: 'Santa Claus <santa@memofromsanta.com>',
                 html: html,
                 text: text,
-                subject: 'Christmas Party: ' + _this.locals.event.title
+                subject: 'Christmas Party: ' + _this.locals.event.title,
+                'h:Reply-To': _this.locals.event.organiser.email
               };
               options.body = querystring.stringify(body);
               request(options, function(err, res) {
