@@ -13,17 +13,17 @@ html(class="no-js", lang="en", xmlns:og="http://opengraphprotocol.org/schema/", 
     meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
     meta(name="viewport", content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0')
 
-    meta(name="description", content="Memo from Santa")
+    meta(name="description", content="Memo from Santa | Organise your Secret Santa party!")
     meta(name="author", content="Joris Ooms, Seeger Mattijs")
     meta(property="fb:app_id", content="389376211197256")
 
-    - var site = {title: 'Memo from Santa', url: 'http://memofromsanta.com', image: 'http://memofromsanta.com/img/og.jpg', description: 'Memo from Santa! Help Santa out by organising your own Secret Santa party!'}
+    - var site = {title: 'Memo from Santa | Organise your Secret Santa party!', url: 'http://memofromsanta.com', image: 'http://memofromsanta.com/img/og.jpg', description: 'Memo from Santa! Help Santa out by organising your own Secret Santa party!'}
     each val, key in site
       meta(property='og:'+'#{key}', content='#{val}')
 
     link(rel="icon", href="img/favicon.ico", type="image/x-icon")
 
-    title=title
+    title Organise your Secret Santa party!
 
     if env === 'development'
       //- build:css app/css/santa.min.css
@@ -46,7 +46,7 @@ html(class="no-js", lang="en", xmlns:og="http://opengraphprotocol.org/schema/", 
           p.col-xs-12.memo__letter
             span.headline Help, Rudolph has gone missing!
             | Santa Claus won't be able to deliver presents in time. Will you help him out?
-            | Fill in the names of you and your friends and plan your Christmas party.
+            | Fill in the names of you and your friends and plan your Secret Santa Christmas party.
             | We'll make sure everyone knows whom to buy a present for!
 
       block content
@@ -80,6 +80,9 @@ html(class="no-js", lang="en", xmlns:og="http://opengraphprotocol.org/schema/", 
             a.addthis_button_preferred_4
             a.addthis_button_compact
             a.addthis_counter.addthis_bubble_style
+
+        p.col-xs-12.col-sm-8.col-sm-push-2.privacy
+          | Memo from Santa does not store e-mail addresses. We will not send you e-mails apart from the event e-mail, nor will we use your e-mail address for any other purpose.
 
     div.legacy
        p
