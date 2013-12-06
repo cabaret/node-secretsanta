@@ -14,7 +14,7 @@
     "node-mailer": "~0.1.1",
     "email-templates": "~0.1.0",
     "q": "~0.9.7",
-    "email-existence": "~0.1.2"
+    "request": "~2.28.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

@@ -11,7 +11,10 @@
      nodemailer = require('nodemailer'),
      emailTemplates = require('email-templates'),
      templatesDir = path.resolve(__dirname, '.', 'templates'),
-     emailExistence = require('email-existence'),
+     request = require('request'),
+     inspect = require('util').inspect,
+     querystring = require('querystring'),
+     url = require('url'),
      q = require('q'),
      app, ga;
 
@@ -87,19 +90,30 @@ app.post('/email', function(req, res) {
 
   checkEmail = function(email) {
     var deferred = q.defer();
-    emailExistence.check(email, function(err, res) {
-        deferred.resolve(err, res);
+    var options = {
+      url: 'https://api.mailgun.net/v2/address/validate',
+      method: 'GET',
+      qs: {address: email },
+      encoding: 'ASCII',
+      auth: {
+        username: "api",
+        password: process.env.MAILGUN_PUB
+      }
+    };
+    request(options, function(err, res) {
+      deferred.resolve(JSON.parse(res.request.response.body).is_valid);
     });
+
     return deferred.promise;
   }
 
   checkEmail(data.email)
     .then(
-      function(err, res) {
-        if(err) {
+      function(is_valid) {
+        if(! is_valid) {
           _err.success = false;
           _err.errors.push({
-            error: err,
+            error: is_valid,
             message: 'E-mail address does not exist: ' + data.email
           });
         } else {
@@ -125,13 +139,17 @@ app.post('/emails', function(req, res) {
     if(err) {
       console.log(err);
     } else {
-      var transportBatch = nodemailer.createTransport('SMTP', {
-        service: 'Mailgun',
+      var options = {
+        url: 'https://api.mailgun.net/v2/memofromsanta.com/messages',
+        method: 'POST',
         auth: {
-          user: process.env.MAILGUN_USER,
-          pass: process.env.MAILGUN_PASS
+          username: 'api',
+          password: process.env.MAILGUN_KEY
+        },
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded'
         }
-      });
+      };
 
       var Render = function(santaEvent, locals) {
         this.locals = locals;
@@ -141,19 +159,33 @@ app.post('/emails', function(req, res) {
           if (err) {
             console.log(err);
             } else {
-              transportBatch.sendMail({
+              var body = {
+                to: _this.locals.from.name + ' <' + _this.locals.from.email + '>',
                 from: 'Santa Claus <santa@memofromsanta.com>',
-                to: _this.locals.from.email,
-                subject: 'Christmas Party: ' + _this.locals.event.title,
                 html: html,
-                generateTextFromHTML: true
-              }, function(err, responseStatus) {
-                if (err) {
+                text: text,
+                subject: 'Christmas Party: ' + _this.locals.event.title
+              };
+              options.body = querystring.stringify(body);
+              request(options, function(err, res) {
+                if(err) {
                   console.log(err);
-                } else {
-                  console.log(responseStatus.message);
                 }
               });
+
+              // transportBatch.sendMail({
+              //   from: 'Santa Claus <santa@memofromsanta.com>',
+              //   to: _this.locals.from.email,
+              //   subject: 'Christmas Party: ' + _this.locals.event.title,
+              //   html: html,
+              //   generateTextFromHTML: true
+              // }, function(err, responseStatus) {
+              //   if (err) {
+              //     console.log(err);
+              //   } else {
+              //     console.log(responseStatus.message);
+              //   }
+              // });
             }
           };
           this.batch = function(batch) {
