@@ -130,7 +130,7 @@ angular.module('SecretSantaApp.controllers', [])
         $('.submit__btn-submit').hide();
         $('.people').slideUp(1000, function() {
           $('.details').slideUp(1000, function() {
-            $('.memo').outerHeight($('.memo').outerHeight());
+            $('.memo').outerHeight($('.memo').outerHeight() + 30);
             $('.memo .container').fadeOut(function() {
               var html  = "<p class='col-xs-12 memo__letter'>";
                 html += "<span class='headline'>Thanks for helping Santa out!</span>"
