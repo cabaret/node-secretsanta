@@ -13,6 +13,9 @@ This has been a great way to learn the basics of AngularJS and build an applicat
 [www.memofromsanta.com](http://www.memofromsanta.com/ "http://www.memofromsanta.com")
 
 ## To do / to learn
+
+A lot of these could have been done if I did not have such a strict deadline. I had to hack things together quickly because I really wanted this to be working in the first week of December (and even that was a little too late).
+
 - Clean up
 - Learn to write tests properly and adopt a test-driven workflow. Too much time has been wasted on testing various parts of the application manually.
 - Learn to structure server-side code properly and adopt an async mindset.
