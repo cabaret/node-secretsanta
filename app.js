@@ -54,30 +54,36 @@ app.configure('development', function(){
 app.get('/', routes.index(app.get('env'), ga));
 
 secretSanta = function(data) {
-  var givers = data,
-  takers = _.clone(givers),
-  matches = [],
-  i;
+  // https://gist.github.com/krisk/1219854
+  var participants = _.shuffle(data);
 
-  for(i = 0; i < data.length; i++) {
-    // can probably be done way better but hey, quick hack for now..
-    var tmpGivers, tmpTakers, giver, taker;
-    tmpGivers = _.clone(givers);
-    tmpTakers = _.clone(takers);
-    giver = _.sample(tmpGivers);
-    tmpTakers = _.without(tmpTakers, giver);
-    taker = _.sample(tmpTakers);
-    takers = _.without(takers, taker);
-    givers = _.without(givers, giver);
-    takers.push(giver);
+  var result = [],
+    // Create a copy of the participants' array, representing the remaining recipients
+    remaining = Array.prototype.slice.call(participants),
+    donor,
+    // Set the recipient to the last participant.  This will resolve an unwanted permutation.
+    // i.e., assume the remaining list is A, B, C.  An unwanted permutation would be
+    // A --> B, B --> A, and C --> ?.  Therefore, prevent this by forcing A --> C.
+    // (Note that since the array is participants, this will still yield a random outcome)
+    recipientIndex = remaining.length - 1,
+    recipient = remaining[recipientIndex],
+    i = 0,
+    len = participants.length;
 
-    matches.push({
-      from: giver,
-      to: taker
-    });
+  while (i < len) {
+    donor = participants[i++];
+    while (recipient === donor || !recipient) {
+        // Grab a random recipient from the remaining recipients
+        recipientIndex = Math.floor(Math.random() * remaining.length);
+        recipient = remaining[recipientIndex];
+      }
+    remaining.splice(recipientIndex, 1);  // Remove the recipient from the list
+    console.log(result);
+    result.push({from: donor, to: recipient});
+    recipient = null;
   }
 
-  return matches;
+  return result;
 };
 
 app.post('/email', function(req, res) {
