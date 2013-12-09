@@ -124,6 +124,8 @@ angular.module('SecretSantaApp.controllers', [])
   };
 
   $scope.addPerson = function(person) {
+    window._gaq.push(['_trackEvent', 'addPerson', 'clickAddPerson']);
+
     var person = person || $scope.newPerson
 
     if($scope.alreadyAdded(person.email)) {
